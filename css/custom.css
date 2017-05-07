@@ -2,7 +2,8 @@ div#yotei {
 	background-color: rgb(96,160,192);
 	border-radius: 30px;
 	text-align: center;
-	padding: 5% 0;
+    margin: 0.5em;
+	padding: 0.5em;
 }
 
 div#yotei div {
@@ -56,6 +57,10 @@ div#yotei div {
 }
 
 @media screen and (max-width: 480px) {
+    h1,h2 {
+        font-size: 80%;
+    }
+
 	iframe {
 		width: 100%;
 	}
