@@ -1,0 +1,62 @@
+div#yotei {
+	background-color: rgb(96,160,192);
+	border-radius: 30px;
+	text-align: center;
+	padding: 5% 0;
+}
+
+div#yotei div {
+	text-align: center;
+}
+
+#kube-features .row:nth-child(2) {
+    padding-bottom: 32px;
+    margin-bottom: 64px;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
+}
+
+.scratch {
+	text-decoration: none;
+}
+
+.entry {
+	color: white;
+}
+
+/* pagetop */
+.pagetop {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 15px;
+}
+.pagetop a {
+    display: block;
+    background-color: #ccc;
+    text-align: center;
+    color: #222;
+    font-size: 12px;
+    text-decoration: none;
+    padding: 5px 10px;
+	filter:alpha(opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
+.pagetop a:hover {
+    display: block;
+    background-color: #b2d1fb;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    text-decoration: none;
+    padding:5px 10px;
+	filter:alpha(opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
+
+@media screen and (max-width: 480px) {
+	iframe {
+		width: 100%;
+	}
+}
