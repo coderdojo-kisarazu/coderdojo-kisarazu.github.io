@@ -68,4 +68,8 @@ div#yotei div {
 	iframe {
 		width: 100%;
 	}
+
+    i.kube-menu {
+        font-size: 30px;
+    }
 }
