@@ -3,7 +3,7 @@ div#yotei {
 	border-radius: 30px;
 	text-align: center;
     margin: 5%;
-	padding: 10% 0;
+	padding: 6%;
 }
 
 div#yotei div {
@@ -58,7 +58,7 @@ div#yotei div {
 
 @media screen and (max-width: 480px) {
     h1 {
-        font-size: 95%;
+        font-size: 30px !important;
     }
 
 	iframe {
