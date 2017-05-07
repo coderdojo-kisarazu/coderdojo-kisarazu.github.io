@@ -57,7 +57,7 @@ div#yotei div {
 }
 
 @media screen and (max-width: 480px) {
-    h1,h2 {
+    h1 {
         font-size: 95%;
     }
 
