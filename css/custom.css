@@ -73,7 +73,7 @@ div#yotei div {
         font-size: 30px;
     }
 
-    span.locale {
+    .locale {
         font-size: 10px !important;
     }
 }
