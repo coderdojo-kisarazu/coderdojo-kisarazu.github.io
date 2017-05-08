@@ -65,6 +65,10 @@ div#yotei div {
         font-size: 28px !important;
     }
 
+    p.locale {
+        font-size: 10px;
+    }
+
 	iframe {
 		width: 100%;
 	}
