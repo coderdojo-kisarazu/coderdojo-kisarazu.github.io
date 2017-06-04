@@ -20,11 +20,8 @@ div#yotei div {
 	text-decoration: none;
 }
 
-.entry {
-	color: white;
-}
-
 button {
+    color: #ff3366;
     background-color: #ff6347;
 }
 
