@@ -24,6 +24,10 @@ div#yotei div {
 	color: white;
 }
 
+button {
+    background-color: #ff6347;
+}
+
 /* pagetop */
 .pagetop {
     display: none;
