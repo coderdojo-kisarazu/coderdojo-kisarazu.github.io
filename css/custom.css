@@ -25,13 +25,13 @@ button {
 }
 
 /* pagetop */
-.pagetop {
+p.pagetop {
     display: none;
     position: fixed;
     bottom: 30px;
     right: 15px;
 }
-.pagetop a {
+p.pagetop a {
     display: block;
     background-color: #ccc;
     text-align: center;
@@ -43,7 +43,7 @@ button {
     -moz-opacity: 0.5;
     opacity: 0.5;
 }
-.pagetop a:hover {
+p.pagetop a:hover {
     display: block;
     background-color: #b2d1fb;
     text-align: center;
@@ -54,6 +54,10 @@ button {
 	filter:alpha(opacity=50);
     -moz-opacity: 0.5;
     opacity: 0.5;
+}
+
+div.fb-page {
+    margin-top: 100px;
 }
 
 @media screen and (max-width: 480px) {
@@ -73,7 +77,11 @@ button {
         font-size: 30px;
     }
 
-    .locale {
+    span.locale {
         font-size: 10px !important;
+    }
+
+    div.fb-page {
+        margin-top: 20px;
     }
 }
