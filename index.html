@@ -23,9 +23,9 @@
 
 
   <meta property="og:title" content="CoderDojo木更津" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://coderdojo-kisarazu.github.io/" />
+  <meta property="og:description" content="" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://coderdojo-kisarazu.github.io/" />
 
 
 
@@ -68,12 +68,24 @@
   <link href="./css/master.css" rel="stylesheet" type="text/css">
   <link href="./css/kube.demo.css" rel="stylesheet" type="text/css">
 
- <link href="./css/custom.css" rel="stylesheet" type="text/css">
+  <link href="./css/custom.css" rel="stylesheet" type="text/css">
 
   <script src="./js/jquery-2.1.4.min.js" type="text/javascript">
   </script>
 
   <script type="text/javascript" src="./js/tocbot.min.js"></script>
+
+  <link rel="manifest" href="manifest.json">
+  <script>
+  if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(function(registration) {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }).catch(function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+      });
+  }
+  </script>
+  
 </head>
 
 
