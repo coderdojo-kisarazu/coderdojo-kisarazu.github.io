@@ -2,7 +2,6 @@ var cacheName = 'coderdojo-kisarazu-caches';
 var filesToCache = [
 	'/index.html',
 	'/sw.js',
-	'/categories/index.xml',
 	'/css/master.css',
 	'/css/highlight.css',
 	'/css/kube.css',
@@ -21,23 +20,10 @@ var filesToCache = [
 	'/js/google.js',
 	'/js/kube.js',
 	'/js/custom.js',
-	'/js/kube.legenda.js',
-	'/js/master.js',
 	'/js/kube.min.js',
 	'/js/jquery-2.1.4.min.js',
 	'/img/dojo/address.png',
 	'/img/dojo/cdk.png',
-	'/img/icon-minimalism.png',
-	'/img/common/logx2.png',
-	'/img/common/logo.png',
-	'/img/common/icon-twitter.png',
-	'/img/icon-typo.png',
-	'/img/kube/icon-minimalism.png',
-	'/img/kube/icon-baseline.png',
-	'/img/kube/icon-typo.png',
-	'/img/kube/typography/01.png',
-	'/img/kube/typography/02.png',
-	'/img/kube/brand.png'
 ];
 
 self.addEventListener('install', function(event) {
