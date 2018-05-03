@@ -16,14 +16,14 @@ var filesToCache = [
 	'/font/Lato-Bold.woff',
 	'/font/Lato-Regular.woff',
 	'/font/Lato-Semibold.woff',
-	'/js/tocbot.min.js',
-	'/js/google.js',
-	'/js/kube.js',
 	'/js/custom.js',
-	'/js/kube.min.js',
+	'/js/google.js',
 	'/js/jquery-2.1.4.min.js',
+	'/js/kube.js',
+	'/js/kube.min.js',
+	'/js/tocbot.min.js',
 	'/img/dojo/address.png',
-	'/img/dojo/cdk.png',
+	'/img/dojo/cdk.png'
 ];
 
 self.addEventListener('install', function(event) {
