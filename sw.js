@@ -1,6 +1,6 @@
 var cacheName = 'coderdojo-kisarazu-caches';
 var filesToCache = [
-	'/index.html'
+	'/index.html',
 	'/sw.js',
 	'/categories/index.xml',
 	'/css/master.css',
