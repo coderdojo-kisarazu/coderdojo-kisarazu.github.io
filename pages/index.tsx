@@ -122,8 +122,10 @@ const Services = () => (
           <h3 className="text-3xl mb-2 font-semibold leading-normal">
             子どもの好奇心に応じて
           </h3>
-          <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
-            CoderDojo木更津では子どもの好奇心に応じて、さまざまなプログラミング言語やツールを主体的に学びます。道場として次のような内容をサポートできます。
+          <div className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
+            <p>
+              CoderDojo木更津では子どもの好奇心に応じて、さまざまなプログラミング言語やツールを主体的に学びます。道場として次のような内容をサポートできます。
+            </p>
             <li>Scratch</li>
             <li>ドローンプログラミング</li>
             <li>LEGO Mindstorms EV3</li>
@@ -131,7 +133,7 @@ const Services = () => (
             <li>Python</li>
             <li>JavaScript/TypeScript</li>
             <li>Unity</li>
-          </p>
+          </div>
         </div>
 
         <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
