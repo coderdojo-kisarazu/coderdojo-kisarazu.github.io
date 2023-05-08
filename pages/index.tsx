@@ -260,7 +260,7 @@ const Team = () => (
         <MemberCard
           name="島野"
           role="チャンピオン代行"
-          icon="/assets/blog/authors/simano.jpg"
+          icon="/assets/blog/authors/shimano.jpg"
           profession="AI, ドローン"
         />
         <MemberCard
