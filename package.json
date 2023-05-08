@@ -19,17 +19,16 @@
     "remark-html": "^15.0.1"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^5.0.0",
     "@types/node": "^18.0.3",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "autoprefixer": "^10.4.7",
-    "postcss": "^8.4.14",
-    "postcss-preset-env": "^8.3.2",
+    "postcss": "^8.4.23",
     "remark-cli": "^11.0.0",
     "remark-frontmatter": "^4.0.1",
     "remark-lint-frontmatter-schema": "^3.15.2",
     "sass": "^1.62.1",
+    "tailwind": "^4.0.0",
     "tailwindcss": "^3.1.4",
     "typescript": "^5.0.4"
   }
