@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { ReactNode } from 'react'
 
 type Props = {
@@ -15,13 +16,20 @@ const ServiceCard = ({ title, children, icon }: Props) => (
             <i className="fas fa-award"></i>
           </div>
         ) : (
-          <div className="text-center inline-flex items-center justify-center h-28">
-            <img
-              alt="CoderDojoKisarazu Icon"
-              src={icon}
-              className="h-auto align-middle border-none"
-              style={{ maxHeight: '100px' }}
-            />
+          <div className="mx-20">
+            <div className="text-center inline-flex items-center justify-center h-28 mx-3">
+              <Image
+                fill
+                alt="CoderDojoKisarazu Icon"
+                style={{
+                  maxHeight: '100px',
+                  objectFit: 'contain',
+                  objectPosition: 'center',
+                  marginTop: '20px'
+                }}
+                src={icon}
+              />
+            </div>
           </div>
         )}
         <div className="2xl:h-36 xl:h-44 lg:h-48 md:h-80">

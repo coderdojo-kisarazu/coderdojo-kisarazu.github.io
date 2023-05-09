@@ -14,9 +14,9 @@ const Index = () => (
   </Layout>
 )
 
-export default Index
+// "url('@public/images/gabriel-vasiliu-t4sHSkJpm0I-unsplash.jpg')"
 
-// <a href="https://unsplash.com/ja/%E5%86%99%E7%9C%9F/vhSz50AaFAs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>の<a href="https://unsplash.com/@nasa?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">NASA</a>が撮影した写真
+export default Index
 
 /// Page Sections
 const Hero = () => (
