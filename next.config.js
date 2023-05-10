@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
 
-const assetPrefix = process.env.ASSET_PREFIX
-  ? '/' + process.env.ASSET_PREFIX
-  : ''
+const urlPrefix = process.env.URL_PREFIX ? '/' + process.env.URL_PREFIX : ''
 
 const nextConfig = {
-  assetPrefix,
-  basePath: assetPrefix
+  assetPrefix: urlPrefix,
+  basePath: urlPrefix
 }
 
 module.exports = nextConfig
