@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: github-pages
     env:
-      URL_PREFIX: ${{ vars.URL_PREFIX }}
+      REPOSITORY_NAME: ${{ vars.REPOSITORY_NAME }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
