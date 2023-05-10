@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { ReactNode } from 'react'
 
 type Props = {
@@ -18,6 +17,8 @@ const ServiceCard = ({ title, children, icon }: Props) => (
         ) : (
           <div className="mx-20">
             <div className="text-center inline-flex items-center justify-center h-28 mx-3">
+              <img alt="CoderDojoKisarazu Icon" src={icon} className="h-32" />
+              {/*
               <Image
                 fill
                 alt="CoderDojoKisarazu Icon"
@@ -28,7 +29,7 @@ const ServiceCard = ({ title, children, icon }: Props) => (
                   marginTop: '20px'
                 }}
                 src={icon}
-              />
+              />*/}
             </div>
           </div>
         )}
