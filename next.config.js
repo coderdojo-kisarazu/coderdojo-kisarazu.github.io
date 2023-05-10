@@ -5,7 +5,8 @@ const assetPrefix = process.env.ASSET_PREFIX
   : ''
 
 const nextConfig = {
-  assetPrefix
+  assetPrefix,
+  basePath: assetPrefix
 }
 
 module.exports = nextConfig
