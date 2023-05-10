@@ -2,6 +2,7 @@ import Layout from '../components/Layout'
 import Anchor from '../components/anchor'
 import MemberCard from '../components/member-card'
 import ServiceCard from '../components/service-card'
+import url from '../lib/url'
 
 const Index = () => (
   <Layout title="CoderDojo | Kisarazu">
@@ -29,8 +30,9 @@ const Hero = () => (
     <div
       className="absolute top-0 w-full h-full bg-center bg-cover"
       style={{
-        backgroundImage:
-          "url('/images/gabriel-vasiliu-t4sHSkJpm0I-unsplash.jpg')"
+        backgroundImage: `url(${url(
+          '/images/gabriel-vasiliu-t4sHSkJpm0I-unsplash.jpg'
+        )})`
       }}
     >
       <span
@@ -312,7 +314,7 @@ const Finisher = () => (
       }
     </div>
 
-    <div className="container mx-auto px-4 lg:pt-24 lg:pb-64">
+    <div className="container mx-auto px-4 lg:pt-24 lg:pb-64 pt-12 pb-24">
       <div className="flex flex-wrap text-center justify-center">
         <div className="w-full lg:w-6/12 px-4">
           <h2 className="text-4xl font-semibold text-white">お問い合わせ</h2>

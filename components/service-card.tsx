@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { ReactNode } from 'react'
+import url from '../lib/url'
 
 type Props = {
   title: string
@@ -30,7 +31,7 @@ const ServiceCard = ({ title, children, icon }: Props) => (
                   objectPosition: 'center',
                   marginTop: '20px'
                 }}
-                src={icon}
+                src={url(icon)}
               />
             </div>
           </div>

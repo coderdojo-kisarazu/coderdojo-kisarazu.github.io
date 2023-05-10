@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import url from '../lib/url'
 
 type Props = {
   name: string
@@ -12,7 +13,7 @@ const MemberCard = ({ name, role, icon, profession }: Props) => (
     <div className="px-6">
       <Image
         alt={name}
-        src={icon}
+        src={url(icon)}
         width="120"
         height="120"
         className="shadow-lg rounded-full max-w-full mx-auto"
