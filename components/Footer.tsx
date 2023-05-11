@@ -1,4 +1,10 @@
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  TwitterIcon,
+  TwitterShareButton
+} from 'react-share'
 
 type Props = {
   href: string
@@ -14,6 +20,12 @@ const Anchor = ({ href, children }: Props) => (
 )
 
 const Footer = () => {
+  const size = 32
+  const [path, setPath] = useState('')
+  useEffect(() => {
+    setPath(window.location.href)
+  }, [])
+
   return (
     <footer className="relative bg-gray-300 pt-8 pb-6">
       <div
@@ -46,31 +58,13 @@ const Footer = () => {
             <h5 className="text-lg mt-0 mb-2 text-gray-700">
               CoderDojoは公園のようなプログラミングを楽しむコミュニティ
             </h5>
-            <div className="mt-6">
-              <button
-                className="bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-                type="button"
-              >
-                <i className="flex fab fa-twitter"></i>
-              </button>
-              <button
-                className="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-                type="button"
-              >
-                <i className="flex fab fa-facebook-square"></i>
-              </button>
-              <button
-                className="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-                type="button"
-              >
-                <i className="flex fab fa-dribbble"></i>
-              </button>
-              <button
-                className="bg-white text-gray-900 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-                type="button"
-              >
-                <i className="flex fab fa-github"></i>
-              </button>
+            <div className="flex flex-row list-none ml-auto gap-3 my-5">
+              <FacebookShareButton url={path}>
+                <FacebookIcon size={size} round />
+              </FacebookShareButton>
+              <TwitterShareButton url={path}>
+                <TwitterIcon size={size} round />
+              </TwitterShareButton>
             </div>
           </div>
           <div className="w-full lg:w-6/12 px-4">

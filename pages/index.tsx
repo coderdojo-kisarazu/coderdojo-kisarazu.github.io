@@ -1,13 +1,27 @@
 import Layout from '../components/Layout'
 import Anchor from '../components/anchor'
+import ArticleCard from '../components/article-card'
 import MemberCard from '../components/member-card'
 import ServiceCard from '../components/service-card'
+import Post from '../interfaces/post'
+import { getAllPosts } from '../lib/api'
 import url from '../lib/url'
 
-const Index = () => (
+type Props = {
+  allPosts: Post[]
+}
+
+export const getStaticProps = async () => {
+  const allPosts = getAllPosts(['title', 'slug', 'image', 'excerpt'])
+  return {
+    props: { allPosts }
+  }
+}
+
+const Index = ({ allPosts }: Props) => (
   <Layout title="CoderDojo | Kisarazu">
     <Hero />
-    <Services />
+    <Services allPosts={allPosts} />
     <Featured />
     <Team />
     <Finisher />
@@ -15,9 +29,9 @@ const Index = () => (
   </Layout>
 )
 
-// "url('@public/images/gabriel-vasiliu-t4sHSkJpm0I-unsplash.jpg')"
-
 export default Index
+
+// '/images/gabriel-vasiliu-t4sHSkJpm0I-unsplash.jpg'
 
 /// Page Sections
 const Hero = () => (
@@ -30,14 +44,12 @@ const Hero = () => (
     <div
       className="absolute top-0 w-full h-full bg-center bg-cover"
       style={{
-        backgroundImage: `url(${url(
-          '/images/gabriel-vasiliu-t4sHSkJpm0I-unsplash.jpg'
-        )})`
+        backgroundImage: `url(${url('/images/lego-mindstorms.jpg')})`
       }}
     >
       <span
         id="blackOverlay"
-        className="w-full h-full absolute opacity-50 bg-black"
+        className="w-full h-full absolute opacity-60 bg-black"
       ></span>
     </div>
     <div className="container relative mx-auto">
@@ -89,91 +101,65 @@ const Hero = () => (
   </div>
 )
 
-const Services = () => (
-  <section className="pb-20 bg-gray-300 -mt-24">
-    <div className="container mx-auto px-4">
-      <div className="flex flex-wrap">
-        <ServiceCard title="CoderDojoとは" icon="/images/coderdojo-logo.png">
-          CoderDojoは7〜17歳の子どもを対象にしたプログラミング道場です。
-          2011年にアイルランドで始まり、
-          世界では100カ国・2,000の道場、日本には213以上の道場があります（2023年5月現在）
-        </ServiceCard>
+const Services = ({ allPosts }: Props) => {
+  const post = allPosts[0]
+  return (
+    <section className="pb-20 bg-gray-300 -mt-24">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-wrap">
+          <ServiceCard title="CoderDojoとは" icon="/images/coderdojo-logo.png">
+            CoderDojoは7〜17歳の子どもを対象にしたプログラミング道場です。
+            2011年にアイルランドで始まり、
+            世界では100カ国・2,000の道場、日本には213以上の道場があります（2023年5月現在）
+          </ServiceCard>
 
-        <ServiceCard
-          title="CoderDojo木更津とは"
-          icon="/images/icon-128x128.png"
-        >
-          CoderDojo木更津は千葉県木更津市を中心に活動するCoderDojoです。
-          参加は無料で、対象は小・中学生となります。
-          慣れるまで小学生は保護者同伴でご参加ください。
-        </ServiceCard>
-        <ServiceCard title="参加にあたり" icon="/images/Scratch_Cat_3.0.svg">
-          はじめのうちは、
-          <Anchor href="https://scratch.mit.edu">Scratch</Anchor>
-          を扱います。その後は、希望に応じて新しいことに取り組んでいきます。
-          <li>対象: 小学生～中学生</li>
-          <li>持ち物: ノートPCとマウスをご持参ください。</li>
-        </ServiceCard>
-      </div>
-
-      <div className="flex flex-wrap items-center mt-32">
-        <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
-          <div className="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-gray-100">
-            <i className="fas fa-user-friends text-3xl"></i>
-          </div>
-          <h3 className="text-3xl mb-2 font-semibold leading-normal">
-            子どもの好奇心に応じて
-          </h3>
-          <div className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
-            <p>
-              CoderDojo木更津では子どもの好奇心に応じて、さまざまなプログラミング言語やツールを主体的に学びます。道場として次のような内容をサポートできます。
-            </p>
-            <li>Scratch</li>
-            <li>ドローンプログラミング</li>
-            <li>LEGO Mindstorms EV3</li>
-            <li>Webサイト構築</li>
-            <li>Python</li>
-            <li>JavaScript/TypeScript</li>
-            <li>Unity</li>
-          </div>
+          <ServiceCard
+            title="CoderDojo木更津とは"
+            icon="/images/icon-128x128.png"
+          >
+            CoderDojo木更津は千葉県木更津市を中心に活動するCoderDojoです。
+            参加は無料で、対象は小・中学生となります。
+            慣れるまで小学生は保護者同伴でご参加ください。
+          </ServiceCard>
+          <ServiceCard title="参加にあたり" icon="/images/Scratch_Cat_3.0.svg">
+            はじめのうちは、
+            <Anchor href="https://scratch.mit.edu">Scratch</Anchor>
+            を扱います。その後は、希望に応じて新しいことに取り組んでいきます。
+            <li>対象: 小学生～中学生</li>
+            <li>持ち物: ノートPCとマウスをご持参ください。</li>
+          </ServiceCard>
         </div>
 
-        <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
-          <div className="relative flex flex-col min-w-0 break-words  w-full mb-6 shadow-lg rounded-lg bg-pink-600">
-            <img
-              alt="..."
-              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
-              className="w-full align-middle rounded-t-lg"
-            />
-            <blockquote className="relative p-8 mb-4">
-              {
-                <svg
-                  preserveAspectRatio="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 583 95"
-                  className="absolute left-0 w-full block"
-                  style={{
-                    height: '95px',
-                    top: '-94px'
-                  }}
-                >
-                  <polygon
-                    points="-30,95 583,95 583,65"
-                    className="text-pink-600 fill-current"
-                  ></polygon>
-                </svg>
-              }
-              <h4 className="text-xl font-bold text-white">何か事例を紹介</h4>
-              <p className="text-md font-light mt-2 text-white">
-                ドローンプログラミングの事例等を紹介します。
+        <div className="flex flex-wrap items-center mt-32">
+          <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
+            <div className="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-gray-100">
+              <i className="fas fa-user-friends text-3xl"></i>
+            </div>
+            <h3 className="text-3xl mb-2 font-semibold leading-normal">
+              子どもの好奇心に応じて
+            </h3>
+            <div className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
+              <p>
+                CoderDojo木更津では子どもの好奇心に応じて、さまざまなプログラミング言語やツールを主体的に学びます。道場として次のような内容をサポートできます。
               </p>
-            </blockquote>
+              <li>Scratch</li>
+              <li>ドローンプログラミング</li>
+              <li>LEGO Mindstorms EV3</li>
+              <li>Webサイト構築</li>
+              <li>Python</li>
+              <li>JavaScript/TypeScript</li>
+              <li>Unity</li>
+            </div>
+          </div>
+
+          <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
+            <ArticleCard post={post} />
           </div>
         </div>
       </div>
-    </div>
-  </section>
-)
+    </section>
+  )
+}
 
 const Featured = () => (
   <section className="relative py-20">
@@ -228,7 +214,7 @@ const Featured = () => (
               </a>
             </h3>
             <p className="mt-4 text-lg leading-relaxed text-gray-600">
-              きさらずみらいラボ（木更津市市民活動支援センター）は、様々な分野の市民活動団体の拠点として、市民活動に関する情報収集・情報発信の場として2015年10月にオープンしました。センターでは常駐のスタッフが市民活動に関わる相談や、団体同士のネットワークづくり、人材育成など市内の活動がより活発になるためのサポートを行います。
+              きさらづみらいラボ（木更津市市民活動支援センター）は、様々な分野の市民活動団体の拠点として、市民活動に関する情報収集・情報発信の場として2015年10月にオープンしました。センターでは常駐のスタッフが市民活動に関わる相談や、団体同士のネットワークづくり、人材育成など市内の活動がより活発になるためのサポートを行います。
               また、センターでは情報発信スペース、作業スペース、印刷室や会議室などを備えています。
             </p>
           </div>
@@ -270,13 +256,13 @@ const Team = () => (
         <MemberCard
           name="飯田"
           role="メンター"
-          icon="/assets/img/team-1-800x800.jpg"
+          icon="/assets/blog/authors/iida.jpg"
           profession="Python, micro:bit, 3Dプリンタ"
         />
         <MemberCard
           name="土屋"
           role="メンター"
-          icon="/assets/img/team-1-800x800.jpg"
+          icon="/assets/blog/authors/tsuchiya.jpg"
           profession="Web"
         />
         <MemberCard
