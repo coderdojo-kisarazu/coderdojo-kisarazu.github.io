@@ -1,6 +1,7 @@
 import Layout from '../components/Layout'
 import Anchor from '../components/anchor'
 import ArticleCard from '../components/article-card'
+import Divider from '../components/divider'
 import MemberCard from '../components/member-card'
 import ServiceCard from '../components/service-card'
 import Post from '../interfaces/post'
@@ -31,8 +32,6 @@ const Index = ({ allPosts }: Props) => (
 
 export default Index
 
-// '/images/gabriel-vasiliu-t4sHSkJpm0I-unsplash.jpg'
-
 /// Page Sections
 const Hero = () => (
   <div
@@ -44,7 +43,7 @@ const Hero = () => (
     <div
       className="absolute top-0 w-full h-full bg-center bg-cover"
       style={{
-        backgroundImage: `url(${url('/images/lego-mindstorms.jpg')})`
+        backgroundImage: `url(${url('/images/hero-image.jpg')})`
       }}
     >
       <span
@@ -81,22 +80,7 @@ const Hero = () => (
       className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
       style={{ height: '70px' }}
     >
-      {
-        <svg
-          className="absolute bottom-0 overflow-hidden"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          version="1.1"
-          viewBox="0 0 2560 100"
-          x="0"
-          y="0"
-        >
-          <polygon
-            className="text-gray-300 fill-current"
-            points="2560 0 2560 100 0 100"
-          ></polygon>
-        </svg>
-      }
+      <Divider color="gray-300" />
     </div>
   </div>
 )
@@ -167,22 +151,7 @@ const Featured = () => (
       className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
       style={{ height: '80px' }}
     >
-      {
-        <svg
-          className="absolute bottom-0 overflow-hidden"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          version="1.1"
-          viewBox="0 0 2560 100"
-          x="0"
-          y="0"
-        >
-          <polygon
-            className="text-white fill-current"
-            points="2560 0 2560 100 0 100"
-          ></polygon>
-        </svg>
-      }
+      <Divider color="white" />
     </div>
 
     <div className="container mx-auto px-4">
@@ -263,7 +232,7 @@ const Team = () => (
           name="土屋"
           role="メンター"
           icon="/assets/blog/authors/tsuchiya.jpg"
-          profession="Web"
+          profession="Scratch"
         />
         <MemberCard
           name="小宮"
@@ -282,22 +251,7 @@ const Finisher = () => (
       className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
       style={{ height: '80px' }}
     >
-      {
-        <svg
-          className="absolute bottom-0 overflow-hidden"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          version="1.1"
-          viewBox="0 0 2560 100"
-          x="0"
-          y="0"
-        >
-          <polygon
-            className="text-gray-900 fill-current"
-            points="2560 0 2560 100 0 100"
-          ></polygon>
-        </svg>
-      }
+      <Divider color="gray-900" />
     </div>
 
     <div className="container mx-auto px-4 lg:pt-24 lg:pb-64 pt-12 pb-24">
