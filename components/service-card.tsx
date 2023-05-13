@@ -19,17 +19,15 @@ const ServiceCard = ({ title, children, icon }: Props) => (
         ) : (
           <div className="mx-20">
             <div className="text-center inline-flex items-center justify-center h-28 mx-3">
-              {/*
-                <img alt="CoderDojoKisarazu Icon" src={icon} className="h-32" />
-              */}
               <Image
                 fill
                 alt="CoderDojoKisarazu Icon"
                 style={{
-                  maxHeight: '100px',
+                  maxHeight: '110px',
                   objectFit: 'contain',
                   objectPosition: 'center',
-                  marginTop: '20px'
+                  marginTop: '10px',
+                  padding: '15px'
                 }}
                 src={url(icon)}
               />

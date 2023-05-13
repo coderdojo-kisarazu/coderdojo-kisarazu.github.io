@@ -48,12 +48,12 @@ const Hero = () => (
     >
       <span
         id="blackOverlay"
-        className="w-full h-full absolute opacity-60 bg-black"
+        className="w-full h-full absolute opacity-50 bg-black"
       ></span>
     </div>
     <div className="container relative mx-auto">
       <div className="items-center flex flex-wrap">
-        <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+        <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center text-shadow">
           <h1 className="text-white font-semibold md:text-5xl text-4xl">
             CoderDojo 木更津
           </h1>
@@ -77,7 +77,7 @@ const Hero = () => (
       </div>
     </div>
     <div
-      className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
+      className="top-auto bottom-0 w-full absolute pointer-events-none"
       style={{ height: '70px' }}
     >
       <Divider color="gray-300" />
@@ -148,7 +148,7 @@ const Services = ({ allPosts }: Props) => {
 const Featured = () => (
   <section className="relative py-20">
     <div
-      className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+      className="bottom-auto top-0 w-full absolute pointer-events-none -mt-20"
       style={{ height: '80px' }}
     >
       <Divider color="white" />
@@ -246,18 +246,20 @@ const Team = () => (
 )
 
 const Finisher = () => (
-  <section className="pb-20 relative block bg-gray-900">
+  <section className="pb-20 relative block bg-gray-800">
     <div
-      className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+      className="bottom-auto top-0 w-full absolute pointer-events-none -mt-20"
       style={{ height: '80px' }}
     >
-      <Divider color="gray-900" />
+      <Divider color="gray-800" />
     </div>
 
     <div className="container mx-auto px-4 lg:pt-24 lg:pb-64 pt-12 pb-24">
       <div className="flex flex-wrap text-center justify-center">
         <div className="w-full lg:w-6/12 px-4">
-          <h2 className="text-4xl font-semibold text-white">お問い合わせ</h2>
+          <h2 className="text-4xl font-semibold text-white">
+            お気軽にご参加を
+          </h2>
         </div>
       </div>
     </div>
@@ -265,70 +267,20 @@ const Finisher = () => (
 )
 
 const Contact = () => (
-  <section className="relative block py-24 lg:pt-0 bg-gray-900">
+  <section className="relative block py-24 lg:pt-0 bg-gray-800">
     <div className="container mx-auto px-4">
       <div className="flex flex-wrap justify-center lg:-mt-64 -mt-48">
-        <div className="w-full lg:w-6/12 px-4">
+        <div className="w-full lg:w-6/12">
           <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300">
-            <div className="flex-auto p-5 lg:p-10">
-              <h4 className="text-2xl font-semibold">連絡・質問</h4>
-              <p className="leading-relaxed mt-1 mb-4 text-gray-600">
-                参加のご連絡をお待ちしております。また、CoderDojo木更津に関する質問もお気軽にどうぞ。
-                （ここはGoogle Formに変更、プライバシーポリシーも必要か）
-              </p>
-              <div className="relative w-full mb-3 mt-8">
-                <label
-                  className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="full-name"
-                >
-                  氏名
-                </label>
-                <input
-                  type="text"
-                  className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                  placeholder="苗字 名前"
-                  style={{ transition: 'all .15s ease' }}
-                />
-              </div>
-
-              <div className="relative w-full mb-3">
-                <label
-                  className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="email"
-                >
-                  メールアドレス
-                </label>
-                <input
-                  type="email"
-                  className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                  placeholder="Email"
-                  style={{ transition: 'all .15s ease' }}
-                />
-              </div>
-
-              <div className="relative w-full mb-3">
-                <label
-                  className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="message"
-                >
-                  内容
-                </label>
-                <textarea
-                  rows={4}
-                  cols={80}
-                  className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                  placeholder="お問い合わせ内容 ..."
-                />
-              </div>
-              <div className="text-center mt-6">
-                <button
-                  className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
-                  type="button"
-                  style={{ transition: 'all .15s ease' }}
-                >
-                  送信
-                </button>
-              </div>
+            <div className="flex-auto lg:p-10">
+              <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLScpLDZyhWEljigl-YIOAUssX6pdJxmnGxn5ctu6ObgF4z3Eng/viewform?embedded=true"
+                className="text-center mx-auto"
+                width="100%"
+                height="890"
+              >
+                読み込んでいます…
+              </iframe>
             </div>
           </div>
         </div>

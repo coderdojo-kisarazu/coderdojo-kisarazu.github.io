@@ -3,9 +3,19 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        notoSans: ['Noto Sans JP'],
-      },
-    },
+        notoSans: ['Noto Sans JP']
+      }
+    }
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.text-shadow': {
+          textShadow: '0px 2px 3px black'
+        }
+      }
+
+      addUtilities(newUtilities)
+    }
+  ]
 }
