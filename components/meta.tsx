@@ -2,9 +2,7 @@ import Head from 'next/head'
 import { HOME_OG_IMAGE_URL } from '../lib/constants'
 import url from '../lib/url'
 
-type Props = { title?: string }
-
-console.log(url(HOME_OG_IMAGE_URL, true))
+type Props = { title: string }
 
 const Meta = ({ title }: Props) => {
   return (
@@ -23,8 +21,8 @@ const Meta = ({ title }: Props) => {
         property="og:description"
         content="CoderDojo木更津のホームページです。"
       />
-      <meta property="og:image" content={url(HOME_OG_IMAGE_URL, true)} />
       <meta property="og:locale" content="ja_JP" />
+      <meta property="og:image" content={url(HOME_OG_IMAGE_URL, true)} />
 
       <meta name="twitter:card" content="summary_large_image" />
     </Head>
