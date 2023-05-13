@@ -25,12 +25,8 @@ const Meta = ({ title }: Props) => {
       />
       <meta property="og:image" content={url(HOME_OG_IMAGE_URL, true)} />
       <meta property="og:locale" content="ja_JP" />
+
       <meta name="twitter:card" content="summary_large_image" />
-      <meta
-        name="twitter:description"
-        content="CoderDojo木更津のホームページです。"
-      />
-      <meta name="twitter:image:src" content={url(HOME_OG_IMAGE_URL, true)} />
     </Head>
   )
 }
