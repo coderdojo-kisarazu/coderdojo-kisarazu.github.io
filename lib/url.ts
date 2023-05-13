@@ -3,12 +3,12 @@ import getConfig from 'next/config'
 const url = (filename: string, absolute = false): string => {
   const { publicRuntimeConfig } = getConfig() as {
     publicRuntimeConfig: {
-      schemaFqdn: string
+      schemeFqdn: string
       directory: string
     }
   }
   return absolute
-    ? publicRuntimeConfig.schemaFqdn + publicRuntimeConfig.directory + filename
+    ? publicRuntimeConfig.schemeFqdn + publicRuntimeConfig.directory + filename
     : publicRuntimeConfig.directory + filename
 }
 
