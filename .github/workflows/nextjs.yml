@@ -30,7 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: github-pages
     env:
-      REPOSITORY_NAME: ${{ vars.REPOSITORY_NAME }}
+      SCHEME_FQDN: ${{ vars.SCHEME_FQDN }}
+      DIRECTORY: ${{ vars.DIRECTORY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3

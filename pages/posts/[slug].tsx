@@ -1,8 +1,8 @@
 import { HousingSize } from 'cfp-calc'
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
-import Footer from '../../components/Footer'
-import Navbar from '../../components/Navbar'
+import Footer from '../../components/footer'
+import Navbar from '../../components/navbar'
 import PostBody from '../../components/post-body'
 import type PostType from '../../interfaces/post'
 import { getAllPosts, getPostBySlug } from '../../lib/api'
@@ -110,7 +110,7 @@ export default function Post({ post, morePosts, preview }: Props) {
                   </div>
                 </div>
                 <div className="text-center mt-12">
-                  <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 mb-2">
+                  <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800">
                     {post.title}
                   </h3>
                   <div className="mb-2 text-gray-700 text-xl mt-2">

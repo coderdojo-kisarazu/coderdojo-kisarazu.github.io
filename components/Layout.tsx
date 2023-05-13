@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import { PropsWithChildren } from 'react'
-import Footer from './Footer'
-import Navbar from './Navbar'
+import Footer from './footer'
 import Meta from './meta'
+import Navbar from './navbar'
 
 interface Props {
   title?: string

@@ -1,11 +1,7 @@
-import { ReactNode, useEffect, useState } from 'react'
-import {
-  FacebookIcon,
-  FacebookShareButton,
-  TwitterIcon,
-  TwitterShareButton
-} from 'react-share'
+import { ReactNode } from 'react'
+import url from '../lib/url'
 import Divider from './divider'
+import SocialButtons from './social-buttons'
 
 type Props = {
   href: string
@@ -21,12 +17,6 @@ const Anchor = ({ href, children }: Props) => (
 )
 
 const Footer = () => {
-  const size = 32
-  const [path, setPath] = useState('')
-  useEffect(() => {
-    setPath(window.location.href)
-  }, [])
-
   return (
     <footer className="relative bg-gray-300 pt-8 pb-6">
       <div
@@ -44,14 +34,7 @@ const Footer = () => {
             <h5 className="text-lg mt-0 mb-2 text-gray-700">
               CoderDojoは公園のようなプログラミングを楽しむコミュニティ
             </h5>
-            <div className="flex flex-row list-none ml-auto gap-3 my-5">
-              <FacebookShareButton url={path}>
-                <FacebookIcon size={size} round />
-              </FacebookShareButton>
-              <TwitterShareButton url={path}>
-                <TwitterIcon size={size} round />
-              </TwitterShareButton>
-            </div>
+            <SocialButtons path={url('', true)} />
           </div>
           <div className="w-full lg:w-6/12 px-4">
             <div className="flex flex-wrap items-top mb-6">

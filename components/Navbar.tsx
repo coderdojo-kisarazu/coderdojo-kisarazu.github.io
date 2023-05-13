@@ -1,22 +1,12 @@
-import { ReactElement, useEffect, useState } from 'react'
-import {
-  FacebookIcon,
-  FacebookShareButton,
-  TwitterIcon,
-  TwitterShareButton
-} from 'react-share'
+import { ReactElement } from 'react'
+import url from '../lib/url'
+import SocialButtons from './social-buttons'
 
 interface Props {
   transparent?: boolean
 }
 
 function Navbar(props: Props): ReactElement {
-  const size = 32
-  const [path, setPath] = useState('')
-  useEffect(() => {
-    setPath(window.location.href)
-  }, [])
-
   return (
     <nav
       className={
@@ -38,14 +28,7 @@ function Navbar(props: Props): ReactElement {
             CoderDojo 木更津
           </a>
         </div>
-        <div className="flex flex-row list-none ml-auto gap-3">
-          <FacebookShareButton url={path}>
-            <FacebookIcon size={size} round />
-          </FacebookShareButton>
-          <TwitterShareButton url={path}>
-            <TwitterIcon size={size} round />
-          </TwitterShareButton>
-        </div>
+        <SocialButtons path={url('', true)} />
       </div>
     </nav>
   )

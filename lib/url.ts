@@ -1,10 +1,15 @@
 import getConfig from 'next/config'
 
-const url = (filename: string): string => {
+const url = (filename: string, absolute = false): string => {
   const { publicRuntimeConfig } = getConfig() as {
-    publicRuntimeConfig: { repositoryName: string }
+    publicRuntimeConfig: {
+      schemaFqdn: string
+      directory: string
+    }
   }
-  return publicRuntimeConfig.repositoryName + filename
+  return absolute
+    ? publicRuntimeConfig.schemaFqdn + publicRuntimeConfig.directory + filename
+    : publicRuntimeConfig.directory + filename
 }
 
 export default url

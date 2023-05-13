@@ -1,8 +1,8 @@
-import Layout from '../components/Layout'
 import Anchor from '../components/anchor'
-import ArticleCard from '../components/article-card'
 import Divider from '../components/divider'
+import Layout from '../components/layout'
 import MemberCard from '../components/member-card'
+import PostCard from '../components/post-card'
 import ServiceCard from '../components/service-card'
 import Post from '../interfaces/post'
 import { getAllPosts } from '../lib/api'
@@ -137,7 +137,7 @@ const Services = ({ allPosts }: Props) => {
           </div>
 
           <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
-            <ArticleCard post={post} />
+            <PostCard post={post} />
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import Post from '../interfaces/post'
 import url from '../lib/url'
 type Props = { post: Post }
 
-const ArticleCard = ({ post }: Props) => (
+const PostCard = ({ post }: Props) => (
   <div className="relative flex flex-col min-w-0 break-words  w-full mb-6 shadow-lg rounded-lg bg-pink-600">
     <img
       alt={post.title}
@@ -33,4 +33,4 @@ const ArticleCard = ({ post }: Props) => (
   </div>
 )
 
-export default ArticleCard
+export default PostCard
