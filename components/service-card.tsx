@@ -6,9 +6,10 @@ type Props = {
   title: string
   children?: ReactNode
   icon?: string
+  maxHeight?: string
 }
 
-const ServiceCard = ({ title, children, icon }: Props) => (
+const ServiceCard = ({ title, children, icon, maxHeight = '110px' }: Props) => (
   <div className="w-full md:w-4/12 px-4 text-center">
     <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
       <div className="px-4 py-5 flex-auto">
@@ -23,7 +24,7 @@ const ServiceCard = ({ title, children, icon }: Props) => (
                 fill
                 alt="CoderDojoKisarazu Icon"
                 style={{
-                  maxHeight: '110px',
+                  maxHeight,
                   objectFit: 'contain',
                   objectPosition: 'center',
                   marginTop: '10px',
