@@ -99,13 +99,18 @@ const Services = ({ allPosts }: Props) => {
 
           <ServiceCard
             title="CoderDojo木更津とは"
-            icon="/images/icon-128x128.png"
+            icon="/images/CoderDojoRacoonIcon.svg"
+            maxHeight="140px"
           >
             CoderDojo木更津は千葉県木更津市を中心に活動するCoderDojoです。
             参加は無料で、対象は小・中学生となります。
             慣れるまで小学生は保護者同伴でご参加ください。
           </ServiceCard>
-          <ServiceCard title="参加にあたり" icon="/images/Scratch_Cat_3.0.svg">
+          <ServiceCard
+            title="参加にあたり"
+            icon="/images/Scratch_Cat_3.0.svg"
+            maxHeight="130px"
+          >
             はじめのうちは、
             <Anchor href="https://scratch.mit.edu">Scratch</Anchor>
             を扱います。その後は、希望に応じて新しいことに取り組んでいきます。
