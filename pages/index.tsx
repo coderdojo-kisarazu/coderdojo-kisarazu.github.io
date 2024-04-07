@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Anchor from '../components/anchor'
 import Divider from '../components/divider'
 import Layout from '../components/layout'
@@ -43,7 +44,9 @@ const Hero = () => (
     <div
       className="absolute top-0 w-full h-full bg-center bg-cover"
       style={{
-        backgroundImage: `url(${url('/images/hero-image.jpg')})`
+        backgroundImage: `url(${url(
+          '/images/new-hero-coderdojo-kisarazu.jpg'
+        )})`
       }}
     >
       <span
@@ -58,19 +61,31 @@ const Hero = () => (
             CoderDojo 木更津
           </h1>
           <div className="mt-6 text-xl text-gray-300">
-            <div className="py-5 md:text-4xl text-xl">
-              <p>毎月第一日曜日午前10時～12時</p>
-              <p className="pb-2">
+            <div className="py-5 md:text-3xl text-xl">
+              <p>毎月第一日曜日</p>
+              <p>
+                10時～12時
                 <a
-                  className="font-bold hover:underline"
-                  href="http://k-mirailabo.com/"
+                  className="font-bold ml-2"
+                  href="https://k-mirailabo.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   きさらづみらいラボ
                 </a>
-                （木更津駅前）にて開催
               </p>
+              <p>
+                13時～15時
+                <a
+                  className="font-bold ml-2"
+                  href="https://gaulab.jp/Yokota"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ガウラボYokota
+                </a>
+              </p>
+              <p className="pb-2">にて開催！</p>
             </div>
           </div>
         </div>
@@ -88,7 +103,7 @@ const Hero = () => (
 const Services = ({ allPosts }: Props) => {
   const post = allPosts[0]
   return (
-    <section className="pb-20 bg-gray-300 -mt-24">
+    <section className="pb-20 bg-gray-300 -mt-20">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap">
           <ServiceCard title="CoderDojoとは" icon="/images/coderdojo-logo.png">
@@ -150,6 +165,38 @@ const Services = ({ allPosts }: Props) => {
   )
 }
 
+const LocationDescription = ({
+  href,
+  name,
+  description
+}: {
+  href: string
+  name: string
+  description: string
+}) => (
+  <div className="w-full xl:w-6/12 lg:w-4/12 ml-auto mr-auto px-4 lg:mt-0 mt-8">
+    <div className="md:pr-12">
+      <div className="text-pink-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-pink-300">
+        <i className="fas fa-map-location text-3xl"></i>
+      </div>
+      <h3 className="text-3xl font-semibold">
+        開催場所
+        <a
+          className="ml-3 text-blue-500 hover:underline"
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {name}
+        </a>
+      </h3>
+      <p className="mt-4 text-lg leading-relaxed text-gray-600">
+        {description}
+      </p>
+    </div>
+  </div>
+)
+
 const Featured = () => (
   <section className="relative py-20">
     <div
@@ -162,37 +209,40 @@ const Featured = () => (
     <div className="container mx-auto px-4">
       <div className="items-center flex flex-wrap">
         <iframe
-          className="w-full md:w-6/12 ml-auto mr-auto px-4"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3252.9152281821966!2d139.9234740146051!3d35.38255845390273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018734d428c41fb%3A0x63c21f39ebea920e!2z44G_44KJ44GE44Op44Oc!5e0!3m2!1sja!2sjp!4v1596336446455!5m2!1sja!2sjp"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6505.829525258489!2d139.922754!3d35.38257!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018734d428c41fb%3A0x63c21f39ebea920e!2z5pyo5pu05rSl5biC5biC5rCR5rS75YuV5pSv5o-044K744Oz44K_44O8IOOAkOOBjeOBleOCieOBpeOBv-OCieOBhOODqeODnOOAkQ!5e0!3m2!1sja!2sjp!4v1712492464555!5m2!1sja!2sjp"
           width="600"
           height="450"
+          className="border-0"
           allowFullScreen={true}
-          aria-hidden={false}
-          tabIndex={0}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
 
-        <div className="w-full md:w-5/12 ml-auto mr-auto px-4 md:mt-0 mt-8">
-          <div className="md:pr-12">
-            <div className="text-pink-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-pink-300">
-              <i className="fas fa-map-location text-3xl"></i>
-            </div>
-            <h3 className="text-3xl font-semibold">
-              開催場所
-              <a
-                className="ml-3 text-blue-500 hover:underline"
-                href="http://k-mirailabo.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                きさらづみらいラボ
-              </a>
-            </h3>
-            <p className="mt-4 text-lg leading-relaxed text-gray-600">
-              きさらづみらいラボ（木更津市市民活動支援センター）は、様々な分野の市民活動団体の拠点として、市民活動に関する情報収集・情報発信の場として2015年10月にオープンしました。センターでは常駐のスタッフが市民活動に関わる相談や、団体同士のネットワークづくり、人材育成など市内の活動がより活発になるためのサポートを行います。
-              また、センターでは情報発信スペース、作業スペース、印刷室や会議室などを備えています。
-            </p>
-          </div>
-        </div>
+        <LocationDescription
+          href="https://k-mirailabo.com"
+          name="きさらづみらいラボ"
+          description="きさらづみらいラボ（木更津市市民活動支援センター）は、様々な分野の市民活動団体の拠点として、市民活動に関する情報収集・情報発信の場として2015年10月にオープンしました。センターでは常駐のスタッフが市民活動に関わる相談や、団体同士のネットワークづくり、人材育成など市内の活動がより活発になるためのサポートを行います。
+              また、センターでは情報発信スペース、作業スペース、印刷室や会議室などを備えています。"
+        />
+      </div>
+    </div>
+
+    <div className="container mx-auto px-4 mt-24">
+      <div className="items-center flex flex-wrap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d1626.401151411431!2d140.01995!3d35.385359!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzXCsDIzJzA1LjEiTiAxNDDCsDAxJzEzLjciRQ!5e0!3m2!1sja!2sjp!4v1712492178253!5m2!1sja!2sjp"
+          width="600"
+          height="450"
+          className="border-0"
+          allowFullScreen={true}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
+        <LocationDescription
+          href="https://gaulab.jp/Yokota"
+          name="ガウラボYokota"
+          description="ガウラボYokotaは袖ケ浦のコワーキングスペースGAULABの2つ目の拠点として誕生しました。地方から何かを始めたい、最初の一歩を踏み出してみたいと思う人たちが集まって何かを生み出すLaboratory(実験室）のような場所それがGAULABです。"
+        />
       </div>
     </div>
   </section>
@@ -246,6 +296,45 @@ const Team = () => (
           profession="Web, Unity"
         />
       </div>
+
+      {/*
+      <div className="flex flex-wrap justify-center text-center mb-12 mt-24">
+        <div className="w-full lg:w-6/12 px-4">
+          <h2 className="text-4xl font-semibold">
+            チャンピオン・メンターの作品
+          </h2>
+        </div>
+      </div>
+
+      <div className="flex flex-wrap mt-5">
+        <div className="w-full md:w-1/2 lg:w-1/2 lg:mb-0 mb-12">
+          <iframe
+            src="https://scratch.mit.edu/projects/860791993/embed"
+            allowTransparency={true}
+            width="485"
+            height="402"
+            allowFullScreen={true}
+            className="mx-auto"
+          ></iframe>
+          <div className="max-w-[485px] mx-auto px-4 mt-4 text-lg">
+            Scratchにオリジナルキャタラクターを読み込んでアニメーションをつける教材です。左右の矢印キーで移動、上矢印キーでジャンプします。スペースキーで必殺のデジタル・フラッシュが炸裂します!
+          </div>
+        </div>
+        <div className="w-full md:w-1/2 lg:w-1/2 lg:mb-0 mb-12">
+          <iframe
+            src="https://scratch.mit.edu/projects/960666319/embed"
+            allowTransparency={true}
+            width="485"
+            height="402"
+            allowFullScreen={true}
+            className="mx-auto"
+          ></iframe>
+          <div className="w-[485px] mx-auto px-4 mt-4 text-lg">
+            風船をウチワであおいで器に入れましょう！障害物で風船が割れないようにご用心！独特の浮遊感をお楽しみ下さい。CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。
+          </div>
+        </div>
+      </div>
+      */}
     </div>
   </section>
 )
@@ -265,6 +354,17 @@ const Finisher = () => (
           <h2 className="text-4xl font-semibold text-white">
             お気軽にご参加を
           </h2>
+          <Image
+            alt="line"
+            src={url('/images/line-official-qr.jpg')}
+            width="260"
+            height="260"
+            className="mx-auto mt-6"
+          />
+          <div className="text-2xl font-semibold text-white mt-6">
+            <p>LINE公式アカウントのQRコードです。</p>
+            <p>お気軽に友だち追加してください。</p>
+          </div>
         </div>
       </div>
     </div>
