@@ -197,6 +197,36 @@ const LocationDescription = ({
   </div>
 )
 
+const Scratch = ({
+  href,
+  iframe,
+  title,
+  description
+}: {
+  href: string
+  iframe: string
+  title: string
+  description: string
+}) => (
+  <div className="max-w-[485px] aspect-[7/6] w-full lg:w-1/2 lg:mb-0 mb-12 mx-auto">
+    <iframe
+      src={iframe}
+      allowTransparency={true}
+      className="mx-auto border-0 w-full h-full"
+    ></iframe>
+
+    <a
+      className="text-blue-500 hover:underline"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <h2 className="text-2xl my-2 font-semibold text-center">{title}</h2>
+    </a>
+    <div className="max-w-[485px] mx-auto px-4 mt-4 text-lg">{description}</div>
+  </div>
+)
+
 const Featured = () => (
   <section className="relative py-20">
     <div
@@ -249,10 +279,10 @@ const Featured = () => (
 )
 
 const Team = () => (
-  <section className="pt-20 pb-48">
-    <div className="container mx-auto px-4">
+  <section className="pt-20 pb-20">
+    <div className="container mx-auto lg:px-4">
       <div className="flex flex-wrap justify-center text-center mb-24">
-        <div className="w-full lg:w-6/12 px-4">
+        <div className="w-full lg:w-10/12 px-4">
           <h2 className="text-4xl font-semibold">参加を支援する人たち</h2>
           <div className="text-lg leading-relaxed m-4 text-gray-600">
             <p>
@@ -297,7 +327,6 @@ const Team = () => (
         />
       </div>
 
-      {/*
       <div className="flex flex-wrap justify-center text-center mb-12 mt-24">
         <div className="w-full lg:w-6/12 px-4">
           <h2 className="text-4xl font-semibold">
@@ -306,35 +335,20 @@ const Team = () => (
         </div>
       </div>
 
-      <div className="flex flex-wrap mt-5">
-        <div className="w-full md:w-1/2 lg:w-1/2 lg:mb-0 mb-12">
-          <iframe
-            src="https://scratch.mit.edu/projects/860791993/embed"
-            allowTransparency={true}
-            width="485"
-            height="402"
-            allowFullScreen={true}
-            className="mx-auto"
-          ></iframe>
-          <div className="max-w-[485px] mx-auto px-4 mt-4 text-lg">
-            Scratchにオリジナルキャタラクターを読み込んでアニメーションをつける教材です。左右の矢印キーで移動、上矢印キーでジャンプします。スペースキーで必殺のデジタル・フラッシュが炸裂します!
-          </div>
-        </div>
-        <div className="w-full md:w-1/2 lg:w-1/2 lg:mb-0 mb-12">
-          <iframe
-            src="https://scratch.mit.edu/projects/960666319/embed"
-            allowTransparency={true}
-            width="485"
-            height="402"
-            allowFullScreen={true}
-            className="mx-auto"
-          ></iframe>
-          <div className="w-[485px] mx-auto px-4 mt-4 text-lg">
-            風船をウチワであおいで器に入れましょう！障害物で風船が割れないようにご用心！独特の浮遊感をお楽しみ下さい。CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。
-          </div>
-        </div>
+      <div className="flex flex-wrap mt-5 mx-auto">
+        <Scratch
+          href="https://scratch.mit.edu/projects/860791993"
+          iframe="https://scratch.mit.edu/projects/860791993/embed"
+          title="デジタル戦隊テレんじゃー"
+          description="Scratchにオリジナルキャタラクターを読み込んでアニメーションをつける教材です。左右の矢印キーで移動、上矢印キーでジャンプします。スペースキーで必殺のデジタル・フラッシュが炸裂します!"
+        />
+        <Scratch
+          href="https://scratch.mit.edu/projects/960666319"
+          iframe="https://scratch.mit.edu/projects/960666319/embed"
+          title="風船ゲーム"
+          description="風船をウチワであおいで器に入れましょう！障害物で風船が割れないようにご用心！独特の浮遊感をお楽しみ下さい。CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。"
+        />
       </div>
-      */}
     </div>
   </section>
 )

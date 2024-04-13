@@ -21,7 +21,7 @@ const Layout = (props: PropsWithChildren<Props>) => {
         <Navbar transparent={true} />
       </header>
       <main>{props.children}</main>
-      <Footer></Footer>
+      <Footer />
     </div>
   )
 }
