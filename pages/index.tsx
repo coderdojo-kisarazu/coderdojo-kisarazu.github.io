@@ -208,12 +208,14 @@ const Scratch = ({
   title: string
   description: string
 }) => (
-  <div className="max-w-[485px] aspect-[7/6] w-full lg:w-1/2 lg:mb-0 mb-12 mx-auto">
-    <iframe
-      src={iframe}
-      allowTransparency={true}
-      className="mx-auto border-0 w-full h-full"
-    ></iframe>
+  <div className="w-full lg:w-1/2 lg:mb-0 mb-12 mx-auto">
+    <div className="max-w-[485px] aspect-[7/6] w-full mx-auto">
+      <iframe
+        src={iframe}
+        allowTransparency={true}
+        className="mx-auto border-0 w-full h-full"
+      ></iframe>
+    </div>
 
     <a
       className="text-blue-500 hover:underline"
