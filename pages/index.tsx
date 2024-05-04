@@ -353,7 +353,7 @@ const Team = () => (
         <Scratch
           href="https://scratch.mit.edu/projects/1013586458"
           iframe="https://scratch.mit.edu/projects/1013586458/embed"
-          title="風船ゲーム"
+          title="風船バレーボール"
           description="風船をうちわであおいで、バレーボールをしましょう。自分の陣地で風船が割れたら負けです！CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。"
         />
       </div>
