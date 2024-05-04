@@ -208,7 +208,7 @@ const Scratch = ({
   title: string
   description: string
 }) => (
-  <div className="w-full lg:w-1/2 lg:mb-0 mb-12 mx-auto">
+  <div className="w-full lg:w-1/2 lg:mb-0 my-12 mx-auto">
     <div className="max-w-[485px] aspect-[7/6] w-full mx-auto">
       <iframe
         src={iframe}
@@ -329,7 +329,7 @@ const Team = () => (
         />
       </div>
 
-      <div className="flex flex-wrap justify-center text-center mb-12 mt-24">
+      <div className="flex flex-wrap justify-center text-center mb-6 mt-24">
         <div className="w-full lg:w-6/12 px-4">
           <h2 className="text-4xl font-semibold">
             チャンピオン・メンターの作品
@@ -349,6 +349,12 @@ const Team = () => (
           iframe="https://scratch.mit.edu/projects/960666319/embed"
           title="風船ゲーム"
           description="風船をウチワであおいで器に入れましょう！障害物で風船が割れないようにご用心！独特の浮遊感をお楽しみ下さい。CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。"
+        />
+        <Scratch
+          href="https://scratch.mit.edu/projects/1013586458"
+          iframe="https://scratch.mit.edu/projects/1013586458/embed"
+          title="風船ゲーム"
+          description="風船をうちわであおいで、バレーボールをしましょう。自分の陣地で風船が割れたら負けです！CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。"
         />
       </div>
     </div>
