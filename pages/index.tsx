@@ -197,29 +197,63 @@ const LocationDescription = ({
   </div>
 )
 
-const Scratch = ({
-  href,
-  iframe,
+const ScratchThumbnailCard = ({
+  id,
   title,
   description
 }: {
-  href: string
-  iframe: string
+  id: string
   title: string
   description: string
 }) => (
-  <div className="w-full lg:w-1/2 lg:mb-0 my-12 mx-auto">
+  <div className="flex-none w-64 bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden mx-2">
+    <a
+      href={`https://scratch.mit.edu/projects/${id}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        src={`https://uploads.scratch.mit.edu/get_image/project/${id}_216x163.png`}
+        alt="サンプル画像"
+        className="w-full object-cover"
+      />
+    </a>
+    <div className="p-4">
+      <a
+        className="text-blue-500 hover:underline"
+        href={`https://scratch.mit.edu/projects/${id}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <h2 className="text-lg font-semibold text-center">{title}</h2>
+      </a>
+      <p className="text-gray-600 mt-2">{description}</p>
+    </div>
+  </div>
+)
+
+const ScratchCard = ({
+  id,
+  title,
+  description
+}: {
+  id: string
+  title: string
+  description: string
+}) => (
+  <div className="w-full xl:w-1/2 2xl:w-1/3 lg:mb-0 my-12 mx-auto">
     <div className="max-w-[485px] aspect-[7/6] w-full mx-auto">
       <iframe
-        src={iframe}
-        allowTransparency={true}
+        src={`https://scratch.mit.edu/projects/${id}/embed`}
+        style={{ backgroundColor: 'transparent' }}
+        allowFullScreen
         className="mx-auto border-0 w-full h-full"
       ></iframe>
     </div>
 
     <a
       className="text-blue-500 hover:underline"
-      href={href}
+      href={`https://scratch.mit.edu/projects/${id}`}
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -338,66 +372,53 @@ const Team = () => (
       </div>
 
       <div className="flex flex-wrap mt-5 mx-auto">
-        <Scratch
-          href="https://scratch.mit.edu/projects/896574978"
-          iframe="https://scratch.mit.edu/projects/896574978/embed"
+        <ScratchCard
+          id="896574978"
           title="どんぐりスロット"
           description="ドングリを使ったスロットゲームです。同じ種類のドングリを組み合わせることができるか!? スタートをクリックしてスロットを回しましょう！スペースキーで止められます。"
         />
-        <Scratch
-          href="https://scratch.mit.edu/projects/860791993"
-          iframe="https://scratch.mit.edu/projects/860791993/embed"
+        <ScratchCard
+          id="860791993"
           title="デジタル戦隊テレんじゃー"
           description="Scratchにオリジナルキャタラクターを読み込んでアニメーションをつける教材です。左右の矢印キーで移動、上矢印キーでジャンプします。スペースキーで必殺のデジタル・フラッシュが炸裂します!"
         />
-        <Scratch
-          href="https://scratch.mit.edu/projects/961389892"
-          iframe="https://scratch.mit.edu/projects/961389892/embed"
-          title="ネコの夏休み"
-          description="爺さんの話を聞いて、地図を開いて森に行きましょう。パスワードは見返せないので暗記しといてください!"
-        />
-        <Scratch
-          href="https://scratch.mit.edu/projects/1101634235"
-          iframe="https://scratch.mit.edu/projects/1101634235/embed"
-          title="席替え"
-          description="Scratchで公平に座席を決めましょう!出席番号を入れるとランダムに座席が決まります。"
-        />
-        <Scratch
-          href="https://scratch.mit.edu/projects/960666319"
-          iframe="https://scratch.mit.edu/projects/960666319/embed"
-          title="風船ゲーム"
-          description="風船をウチワであおいで器に入れましょう!障害物で風船が割れないようにご用心!独特の浮遊感をお楽しみ下さい。CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。"
-        />
-        <Scratch
-          href="https://scratch.mit.edu/projects/918967238/"
-          iframe="https://scratch.mit.edu/projects/918967238/embed"
+        <ScratchCard
+          id="918967238"
           title="COSOMシューティング"
           description="矢印キーで操作できます。右側にいる人を動かして宇宙人をやっつけます。攻撃方法は、スペースキーで弱攻撃(エネルギー１５以上)Aキーで強攻撃(エネルギー２５以上)Sキーで遠距離攻撃(エネルギー２５以上)です。3つの攻撃をうまく使って雷攻撃をしてくる悪いうちゅ人を倒しましょう。"
         />
-        <Scratch
-          href="https://scratch.mit.edu/projects/766087772"
-          iframe="https://scratch.mit.edu/projects/766087772/embed"
-          title="ゆきんこゲーム"
-          description="めいろ、ジャンプゲーム、アクションゲーム、３つの種類のゲームをゆきんこで楽しみましょう!"
-        />
-        <Scratch
-          href="https://scratch.mit.edu/projects/799849878"
-          iframe="https://scratch.mit.edu/projects/799849878/embed"
-          title="鬼はそとゲーム"
-          description="豆を投げて鬼退治!鬼は棍棒を投げてくるので、避けながら豆を投げましょう。"
-        />
-        <Scratch
-          href="https://scratch.mit.edu/projects/1013586458"
-          iframe="https://scratch.mit.edu/projects/1013586458/embed"
-          title="風船バレーボール"
-          description="風船をうちわであおいで、バレーボールをしましょう。自分の陣地で風船が割れたら負けです!CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。"
-        />
-        <Scratch
-          href="https://scratch.mit.edu/projects/887768724"
-          iframe="https://scratch.mit.edu/projects/887768724/embed"
-          title="アゲハの成長"
-          description="Scratchでなみアゲハが幼虫から成虫になるまでを学びましょう!"
-        />
+        {/*
+         */}
+      </div>
+
+      <div className="overflow-x-auto py-4">
+        <div className="flex space-x-4 px-4">
+          <ScratchThumbnailCard
+            id="960666319"
+            title="風船ゲーム"
+            description="風船をウチワであおいで器に入れましょう!障害物で風船が割れないようにご用心!独特の浮遊感をお楽しみ下さい。CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。"
+          />
+          <ScratchThumbnailCard
+            id="766087772"
+            title="ゆきんこゲーム"
+            description="めいろ、ジャンプゲーム、アクションゲーム、３つの種類のゲームをゆきんこで楽しみましょう!"
+          />
+          <ScratchThumbnailCard
+            id="799849878"
+            title="鬼はそとゲーム"
+            description="豆を投げて鬼退治!鬼は棍棒を投げてくるので、避けながら豆を投げましょう。"
+          />
+          <ScratchThumbnailCard
+            id="1013586458"
+            title="風船バレーボール"
+            description="風船をうちわであおいで、バレーボールをしましょう。自分の陣地で風船が割れたら負けです!CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。"
+          />
+          <ScratchThumbnailCard
+            id="887768724"
+            title="アゲハの成長"
+            description="Scratchでなみアゲハが幼虫から成虫になるまでを学びましょう!"
+          />
+        </div>
       </div>
     </div>
   </section>
