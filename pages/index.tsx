@@ -8,6 +8,7 @@ import ServiceCard from '../components/service-card'
 import Post from '../interfaces/post'
 import { getAllPosts } from '../lib/api'
 import url from '../lib/url'
+import { useEffect, useState } from 'react'
 
 type Props = {
   allPosts: Post[]
@@ -19,17 +20,74 @@ export const getStaticProps = async () => {
     props: { allPosts }
   }
 }
+const shuffleArray = (array: any[]) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]
+  }
+  return array
+}
+const Index = ({ allPosts }: Props) => {
+  const scratchCardsData = [
+    {
+      id: "896574978",
+      title: "どんぐりスロット",
+      description: "ドングリを使ったスロットゲームです。同じ種類のドングリを組み合わせることができるか!? スタートをクリックしてスロットを回しましょう！スペースキーで止められます。"
+    },
+    {
+      id: "860791993",
+      title: "デジタル戦隊テレんじゃー",
+      description: "Scratchにオリジナルキャタラクターを読み込んでアニメーションをつける教材です。左右の矢印キーで移動、上矢印キーでジャンプします。スペースキーで必殺のデジタル・フラッシュが炸裂します!"
+    },
+    {
+      id: "918967238",
+      title: "COSOMシューティング",
+      description: "矢印キーで操作できます。右側にいる人を動かして宇宙人をやっつけます。攻撃方法は、スペースキーで弱攻撃(エネルギー１５以上)Aキーで強攻撃(エネルギー２５以上)Sキーで遠距離攻撃(エネルギー２５以上)です。3つの攻撃をうまく使って雷攻撃をしてくる悪い宇宙人を倒しましょう。"
+    }
+  ];
 
-const Index = ({ allPosts }: Props) => (
-  <Layout title="CoderDojo | Kisarazu">
-    <Hero />
-    <Services allPosts={allPosts} />
-    <Featured />
-    <Team />
-    <Finisher />
-    <Contact />
-  </Layout>
-)
+  const scratchThumbnailCardsData = [
+    {
+      id: "960666319",
+      title: "風船ゲーム",
+      description: "風船をウチワであおいで器に入れましょう!障害物で風船が割れないようにご用心!独特の浮遊感をお楽しみ下さい。CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。"
+    },
+    {
+      id: "766087772",
+      title: "ゆきんこゲーム",
+      description: "めいろ、ジャンプゲーム、アクションゲーム、３つの種類のゲームをゆきんこで楽しみましょう!"
+    },
+    {
+      id: "799849878",
+      title: "鬼はそとゲーム",
+      description: "豆を投げて鬼退治!鬼は棍棒を投げてくるので、避けながら豆を投げましょう。"
+    },
+    {
+      id: "1013586458",
+      title: "風船バレーボール",
+      description: "風船をうちわであおいで、バレーボールをしましょう。自分の陣地で風船が割れたら負けです!CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。"
+    },
+    {
+      id: "887768724",
+      title: "アゲハの成長",
+      description: "Scratchでなみアゲハが幼虫から成虫になるまでを学びましょう!"
+    }
+  ];
+
+  const combinedScratchCards = [...scratchCardsData, ...scratchThumbnailCardsData];
+  const shuffledScratchCards = shuffleArray(combinedScratchCards);
+
+  return (
+    <Layout title="CoderDojo | Kisarazu">
+      <Hero />
+      <Services allPosts={allPosts} />
+      <Featured scratchCards={shuffledScratchCards} />
+      <Team scratchCards={shuffledScratchCards} />
+      <Finisher />
+      <Contact />
+    </Layout>
+  );
+};
 
 export default Index
 
@@ -100,7 +158,7 @@ const Hero = () => (
   </div>
 )
 
-const Services = ({ allPosts }: Props) => {
+const Services = ({ allPosts }: { allPosts: Post[] }) => {
   const post = allPosts[0]
   return (
     <section className="pb-20 bg-gray-300 -mt-20">
@@ -263,7 +321,7 @@ const ScratchCard = ({
   </div>
 )
 
-const Featured = () => (
+const Featured = ({ scratchCards }: { scratchCards: any[] }) => (
   <section className="relative py-20">
     <div
       className="bottom-auto top-0 w-full absolute pointer-events-none -mt-20"
@@ -314,115 +372,102 @@ const Featured = () => (
   </section>
 )
 
-const Team = () => (
-  <section className="pt-20 pb-20">
-    <div className="container mx-auto lg:px-4">
-      <div className="flex flex-wrap justify-center text-center mb-24">
-        <div className="w-full lg:w-10/12 px-4">
-          <h2 className="text-4xl font-semibold">参加を支援する人たち</h2>
-          <div className="text-lg leading-relaxed m-4 text-gray-600">
-            <p>
-              CoderDojoはプログラミング教室ではありません。ニンジャと呼ばれる参加者は、自分の興味に応じて、自分のペースで学びます。ニンジャの学びをサポートするのがチャンピオン（Dojoの運営担当）・メンター（技術的な案内人）の役割です。
-            </p>
-            <p className="mt-2">
-              CoderDojo木更津のチャンピオン、メンターはコンピュータの専門家揃いで、様々な種類のプログラミングをサポートします。
-            </p>
+
+const Team = ({ scratchCards }: { scratchCards: any[] }) => {
+  const [scratchCardItems, setScratchCardItems] = useState<any[]>([])
+  const [scratchThumbnailCardItems, setScratchThumbnailCardItems] = useState<any[]>([])
+
+  useEffect(() => {
+    const shuffledScratchCards = shuffleArray(scratchCards)
+    const scratchCardItems = shuffledScratchCards.slice(0, 3);
+    const scratchThumbnailCardItems = shuffledScratchCards.slice(3);
+    setScratchCardItems(scratchCardItems)
+    setScratchThumbnailCardItems(scratchThumbnailCardItems)
+  }, [])
+
+  return (
+    <section className="pt-20 pb-20">
+      <div className="container mx-auto lg:px-4">
+        <div className="flex flex-wrap justify-center text-center mb-24">
+          <div className="w-full lg:w-10/12 px-4">
+            <h2 className="text-4xl font-semibold">参加を支援する人たち</h2>
+            <div className="text-lg leading-relaxed m-4 text-gray-600">
+              <p>
+                CoderDojoはプログラミング教室ではありません。ニンジャと呼ばれる参加者は、自分の興味に応じて、自分のペースで学びます。ニンジャの学びをサポートするのがチャンピオン（Dojoの運営担当）・メンター（技術的な案内人）の役割です。
+              </p>
+              <p className="mt-2">
+                CoderDojo木更津のチャンピオン、メンターはコンピュータの専門家揃いで、様々な種類のプログラミングをサポートします。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-wrap">
+          <MemberCard
+            name="仲村"
+            role="チャンピオン"
+            icon="/assets/blog/authors/nakamura.jpg"
+            profession="Web"
+          />
+          <MemberCard
+            name="島野"
+            role="チャンピオン代行"
+            icon="/assets/blog/authors/shimano.jpg"
+            profession="AI, ドローン"
+          />
+          <MemberCard
+            name="飯田"
+            role="メンター"
+            icon="/assets/blog/authors/iida.jpg"
+            profession="Python, micro:bit, 3Dプリンタ"
+          />
+          <MemberCard
+            name="土屋"
+            role="メンター"
+            icon="/assets/blog/authors/tsuchiya.jpg"
+            profession="Scratch"
+          />
+          <MemberCard
+            name="小宮"
+            role="メンター"
+            icon="/assets/blog/authors/komiya.png"
+            profession="Web, Unity"
+          />
+        </div>
+
+        <div className="flex flex-wrap justify-center text-center mb-6 mt-24">
+          <div className="w-full lg:w-6/12 px-4">
+            <h2 className="text-4xl font-semibold">
+              ニンジャ・チャンピオン・メンターの作品
+            </h2>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap mt-5 mx-auto">
+          {scratchCardItems.map((card) => (
+            <ScratchCard
+              key={card.id}
+              id={card.id}
+              title={card.title}
+              description={card.description}
+            />
+          ))}
+        </div>
+        <div className="overflow-x-auto py-4">
+          <div className="flex space-x-4 px-4">
+            {scratchThumbnailCardItems.map((card) => (
+              <ScratchThumbnailCard
+                key={card.id}
+                id={card.id}
+                title={card.title}
+                description={card.description}
+              />
+            ))}
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap">
-        <MemberCard
-          name="仲村"
-          role="チャンピオン"
-          icon="/assets/blog/authors/nakamura.jpg"
-          profession="Web"
-        />
-        <MemberCard
-          name="島野"
-          role="チャンピオン代行"
-          icon="/assets/blog/authors/shimano.jpg"
-          profession="AI, ドローン"
-        />
-        <MemberCard
-          name="飯田"
-          role="メンター"
-          icon="/assets/blog/authors/iida.jpg"
-          profession="Python, micro:bit, 3Dプリンタ"
-        />
-        <MemberCard
-          name="土屋"
-          role="メンター"
-          icon="/assets/blog/authors/tsuchiya.jpg"
-          profession="Scratch"
-        />
-        <MemberCard
-          name="小宮"
-          role="メンター"
-          icon="/assets/blog/authors/komiya.png"
-          profession="Web, Unity"
-        />
-      </div>
-
-      <div className="flex flex-wrap justify-center text-center mb-6 mt-24">
-        <div className="w-full lg:w-6/12 px-4">
-          <h2 className="text-4xl font-semibold">
-            ニンジャ・チャンピオン・メンターの作品
-          </h2>
-        </div>
-      </div>
-
-      <div className="flex flex-wrap mt-5 mx-auto">
-        <ScratchCard
-          id="896574978"
-          title="どんぐりスロット"
-          description="ドングリを使ったスロットゲームです。同じ種類のドングリを組み合わせることができるか!? スタートをクリックしてスロットを回しましょう！スペースキーで止められます。"
-        />
-        <ScratchCard
-          id="860791993"
-          title="デジタル戦隊テレんじゃー"
-          description="Scratchにオリジナルキャタラクターを読み込んでアニメーションをつける教材です。左右の矢印キーで移動、上矢印キーでジャンプします。スペースキーで必殺のデジタル・フラッシュが炸裂します!"
-        />
-        <ScratchCard
-          id="918967238"
-          title="COSOMシューティング"
-          description="矢印キーで操作できます。右側にいる人を動かして宇宙人をやっつけます。攻撃方法は、スペースキーで弱攻撃(エネルギー１５以上)Aキーで強攻撃(エネルギー２５以上)Sキーで遠距離攻撃(エネルギー２５以上)です。3つの攻撃をうまく使って雷攻撃をしてくる悪いうちゅ人を倒しましょう。"
-        />
-        {/*
-         */}
-      </div>
-
-      <div className="overflow-x-auto py-4">
-        <div className="flex space-x-4 px-4">
-          <ScratchThumbnailCard
-            id="960666319"
-            title="風船ゲーム"
-            description="風船をウチワであおいで器に入れましょう!障害物で風船が割れないようにご用心!独特の浮遊感をお楽しみ下さい。CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。"
-          />
-          <ScratchThumbnailCard
-            id="766087772"
-            title="ゆきんこゲーム"
-            description="めいろ、ジャンプゲーム、アクションゲーム、３つの種類のゲームをゆきんこで楽しみましょう!"
-          />
-          <ScratchThumbnailCard
-            id="799849878"
-            title="鬼はそとゲーム"
-            description="豆を投げて鬼退治!鬼は棍棒を投げてくるので、避けながら豆を投げましょう。"
-          />
-          <ScratchThumbnailCard
-            id="1013586458"
-            title="風船バレーボール"
-            description="風船をうちわであおいで、バレーボールをしましょう。自分の陣地で風船が割れたら負けです!CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。"
-          />
-          <ScratchThumbnailCard
-            id="887768724"
-            title="アゲハの成長"
-            description="Scratchでなみアゲハが幼虫から成虫になるまでを学びましょう!"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-)
+    </section>
+  );
+};
 
 const Finisher = () => (
   <section className="pb-20 relative block bg-gray-800">
