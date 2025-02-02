@@ -10,16 +10,17 @@ import { getAllPosts } from '../lib/api'
 import url from '../lib/url'
 import { useEffect, useState } from 'react'
 
-type Props = {
-  allPosts: Post[]
+type ScratchCard = {
+  id: string
+  title: string
+  description: string
 }
 
-export const getStaticProps = async () => {
-  const allPosts = getAllPosts(['title', 'slug', 'image', 'excerpt'])
-  return {
-    props: { allPosts }
-  }
+type Props = {
+  allPosts: Post[],
+  scratchCards: ScratchCard[]
 }
+
 const shuffleArray = (array: any[]) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -27,8 +28,10 @@ const shuffleArray = (array: any[]) => {
   }
   return array
 }
-const Index = ({ allPosts }: Props) => {
-  const scratchCardsData = [
+
+export const getStaticProps = async () => {
+  const allPosts = getAllPosts(['title', 'slug', 'image', 'excerpt'])
+  const scratchCards = [
     {
       id: "896574978",
       title: "どんぐりスロット",
@@ -43,10 +46,7 @@ const Index = ({ allPosts }: Props) => {
       id: "918967238",
       title: "COSOMシューティング",
       description: "矢印キーで操作できます。右側にいる人を動かして宇宙人をやっつけます。攻撃方法は、スペースキーで弱攻撃(エネルギー１５以上)Aキーで強攻撃(エネルギー２５以上)Sキーで遠距離攻撃(エネルギー２５以上)です。3つの攻撃をうまく使って雷攻撃をしてくる悪い宇宙人を倒しましょう。"
-    }
-  ];
-
-  const scratchThumbnailCardsData = [
+    },
     {
       id: "960666319",
       title: "風船ゲーム",
@@ -68,21 +68,25 @@ const Index = ({ allPosts }: Props) => {
       description: "風船をうちわであおいで、バレーボールをしましょう。自分の陣地で風船が割れたら負けです!CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。"
     },
     {
-      id: "887768724",
+      id: "556638656",
       title: "アゲハの成長",
       description: "Scratchでなみアゲハが幼虫から成虫になるまでを学びましょう!"
     }
   ];
 
-  const combinedScratchCards = [...scratchCardsData, ...scratchThumbnailCardsData];
-  const shuffledScratchCards = shuffleArray(combinedScratchCards);
+  return {
+    props: { allPosts, scratchCards }
+  }
+}
+
+const Index = ({ allPosts, scratchCards }: Props) => {
 
   return (
-    <Layout title="CoderDojo | Kisarazu">
+    <Layout title="CoderDojo | Kisarazu+Sodegaura">
       <Hero />
       <Services allPosts={allPosts} />
-      <Featured scratchCards={shuffledScratchCards} />
-      <Team scratchCards={shuffledScratchCards} />
+      <Featured />
+      <Team scratchCards={scratchCards} />
       <Finisher />
       <Contact />
     </Layout>
@@ -116,7 +120,7 @@ const Hero = () => (
       <div className="items-center flex flex-wrap">
         <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center text-shadow">
           <h1 className="text-white font-semibold md:text-5xl text-4xl">
-            CoderDojo 木更津
+            CoderDojo 木更津・袖ヶ浦
           </h1>
           <div className="mt-6 text-xl text-gray-300">
             <div className="py-5 md:text-3xl text-xl">
@@ -171,11 +175,11 @@ const Services = ({ allPosts }: { allPosts: Post[] }) => {
           </ServiceCard>
 
           <ServiceCard
-            title="CoderDojo木更津とは"
-            icon="/images/CoderDojoRacoonIcon.svg"
+            title="CoderDojo木更津・袖ヶ浦とは"
+            icon="/images/coderdojo-kisarazu-sodegaura.svg"
             maxHeight="140px"
           >
-            CoderDojo木更津は千葉県木更津市を中心に活動するCoderDojoです。
+            CoderDojo木更津・袖ヶ浦は千葉県木更津市を中心に活動するCoderDojoです。
             参加は無料で、対象は小・中学生となります。
             慣れるまで小学生は保護者同伴でご参加ください。
           </ServiceCard>
@@ -202,7 +206,7 @@ const Services = ({ allPosts }: { allPosts: Post[] }) => {
             </h3>
             <div className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
               <p>
-                CoderDojo木更津では子どもの好奇心に応じて、さまざまなプログラミング言語やツールを主体的に学びます。道場として次のような内容をサポートできます。
+                CoderDojo木更津・袖ヶ浦では子どもの好奇心に応じて、さまざまなプログラミング言語やツールを主体的に学びます。道場として次のような内容をサポートできます。
               </p>
               <li>Scratch</li>
               <li>ドローンプログラミング</li>
@@ -321,7 +325,7 @@ const ScratchCard = ({
   </div>
 )
 
-const Featured = ({ scratchCards }: { scratchCards: any[] }) => (
+const Featured = () => (
   <section className="relative py-20">
     <div
       className="bottom-auto top-0 w-full absolute pointer-events-none -mt-20"
@@ -373,14 +377,14 @@ const Featured = ({ scratchCards }: { scratchCards: any[] }) => (
 )
 
 
-const Team = ({ scratchCards }: { scratchCards: any[] }) => {
-  const [scratchCardItems, setScratchCardItems] = useState<any[]>([])
-  const [scratchThumbnailCardItems, setScratchThumbnailCardItems] = useState<any[]>([])
+const Team = ({ scratchCards }: { scratchCards: ScratchCard[] }) => {
+  const [scratchCardItems, setScratchCardItems] = useState<ScratchCard[]>([])
+  const [scratchThumbnailCardItems, setScratchThumbnailCardItems] = useState<ScratchCard[]>([])
 
   useEffect(() => {
-    const shuffledScratchCards = shuffleArray(scratchCards)
-    const scratchCardItems = shuffledScratchCards.slice(0, 3);
-    const scratchThumbnailCardItems = shuffledScratchCards.slice(3);
+    const scratchCardsData = shuffleArray(scratchCards)
+    const scratchCardItems = scratchCardsData.slice(0, 3);
+    const scratchThumbnailCardItems = scratchCardsData.slice(3);
     setScratchCardItems(scratchCardItems)
     setScratchThumbnailCardItems(scratchThumbnailCardItems)
   }, [])
@@ -396,7 +400,7 @@ const Team = ({ scratchCards }: { scratchCards: any[] }) => {
                 CoderDojoはプログラミング教室ではありません。ニンジャと呼ばれる参加者は、自分の興味に応じて、自分のペースで学びます。ニンジャの学びをサポートするのがチャンピオン（Dojoの運営担当）・メンター（技術的な案内人）の役割です。
               </p>
               <p className="mt-2">
-                CoderDojo木更津のチャンピオン、メンターはコンピュータの専門家揃いで、様々な種類のプログラミングをサポートします。
+                CoderDojo木更津・袖ヶ浦のチャンピオン、メンターはコンピュータの専門家揃いで、様々な種類のプログラミングをサポートします。
               </p>
             </div>
           </div>
