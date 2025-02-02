@@ -11,25 +11,57 @@ import url from '../lib/url'
 
 type Props = {
   allPosts: Post[]
+  shuffledScratchCards: any[]
 }
 
 export const getStaticProps = async () => {
   const allPosts = getAllPosts(['title', 'slug', 'image', 'excerpt'])
+
+  const scratchCardsData = [
+    {
+      id: "896574978",
+      title: "どんぐりスロット",
+      description: "ドングリを使ったスロットゲームです。同じ種類のドングリを組み合わせることができるか!? スタートをクリックしてスロットを回しましょう！スペースキーで止められます。"
+    },
+    {
+      id: "860791993",
+      title: "デジタル戦隊テレんじゃー",
+      description: "Scratchにオリジナルキャタラクターを読み込んでアニメーションをつける教材です。左右の矢印キーで移動、上矢印キーでジャンプします。スペースキーで必殺のデジタル・フラッシュが炸裂します!"
+    },
+    {
+      id: "918967238",
+      title: "COSOMシューティング",
+      description: "矢印キーで操作できます。右側にいる人を動かして宇宙人をやっつけます。攻撃方法は、スペースキーで弱攻撃(エネルギー１５以上)Aキーで強攻撃(エネルギー２５以上)Sキーで遠距離攻撃(エネルギー２５以上)です。3つの攻撃をうまく使って雷攻撃をしてくる悪いうちゅ人を倒しましょう。"
+    }
+  ]
+
+  const shuffleArray = (array: any[]) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[array[i], array[j]] = [array[j], array[i]]
+    }
+    return array
+  }
+
+  const shuffledScratchCards = shuffleArray(scratchCardsData)
+
   return {
-    props: { allPosts }
+    props: { allPosts, shuffledScratchCards }
   }
 }
 
-const Index = ({ allPosts }: Props) => (
-  <Layout title="CoderDojo | Kisarazu">
-    <Hero />
-    <Services allPosts={allPosts} />
-    <Featured />
-    <Team />
-    <Finisher />
-    <Contact />
-  </Layout>
-)
+const Index = ({ allPosts, shuffledScratchCards }: Props) => {
+  return (
+    <Layout title="CoderDojo | Kisarazu">
+      <Hero />
+      <Services allPosts={allPosts} />
+      <Featured scratchCards={shuffledScratchCards} />
+      <Team scratchCards={shuffledScratchCards} />
+      <Finisher />
+      <Contact />
+    </Layout>
+  )
+}
 
 export default Index
 
@@ -100,7 +132,7 @@ const Hero = () => (
   </div>
 )
 
-const Services = ({ allPosts }: Props) => {
+const Services = ({ allPosts }: { allPosts: Post[] }) => {
   const post = allPosts[0]
   return (
     <section className="pb-20 bg-gray-300 -mt-20">
@@ -263,7 +295,7 @@ const ScratchCard = ({
   </div>
 )
 
-const Featured = () => (
+const Featured = ({ scratchCards }: { scratchCards: any[] }) => (
   <section className="relative py-20">
     <div
       className="bottom-auto top-0 w-full absolute pointer-events-none -mt-20"
@@ -314,7 +346,7 @@ const Featured = () => (
   </section>
 )
 
-const Team = () => (
+const Team = ({ scratchCards }: { scratchCards: any[] }) => (
   <section className="pt-20 pb-20">
     <div className="container mx-auto lg:px-4">
       <div className="flex flex-wrap justify-center text-center mb-24">
@@ -372,23 +404,14 @@ const Team = () => (
       </div>
 
       <div className="flex flex-wrap mt-5 mx-auto">
-        <ScratchCard
-          id="896574978"
-          title="どんぐりスロット"
-          description="ドングリを使ったスロットゲームです。同じ種類のドングリを組み合わせることができるか!? スタートをクリックしてスロットを回しましょう！スペースキーで止められます。"
-        />
-        <ScratchCard
-          id="860791993"
-          title="デジタル戦隊テレんじゃー"
-          description="Scratchにオリジナルキャタラクターを読み込んでアニメーションをつける教材です。左右の矢印キーで移動、上矢印キーでジャンプします。スペースキーで必殺のデジタル・フラッシュが炸裂します!"
-        />
-        <ScratchCard
-          id="918967238"
-          title="COSOMシューティング"
-          description="矢印キーで操作できます。右側にいる人を動かして宇宙人をやっつけます。攻撃方法は、スペースキーで弱攻撃(エネルギー１５以上)Aキーで強攻撃(エネルギー２５以上)Sキーで遠距離攻撃(エネルギー２５以上)です。3つの攻撃をうまく使って雷攻撃をしてくる悪いうちゅ人を倒しましょう。"
-        />
-        {/*
-         */}
+        {scratchCards.map((card) => (
+          <ScratchCard
+            key={card.id}
+            id={card.id}
+            title={card.title}
+            description={card.description}
+          />
+        ))}
       </div>
 
       <div className="overflow-x-auto py-4">
