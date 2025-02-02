@@ -372,15 +372,18 @@ const Featured = ({ scratchCards }: { scratchCards: any[] }) => (
   </section>
 )
 
+
 const Team = ({ scratchCards }: { scratchCards: any[] }) => {
-  const [shuffledScratchCards, setShuffledScratchCards] = useState(scratchCards);
+  const [scratchCardItems, setScratchCardItems] = useState<any[]>([])
+  const [scratchThumbnailCardItems, setScratchThumbnailCardItems] = useState<any[]>([])
 
   useEffect(() => {
-    setShuffledScratchCards(shuffleArray([...scratchCards]));
-  }, [scratchCards]);
-
-  const scratchCardItems = shuffledScratchCards.slice(0, 3);
-  const scratchThumbnailCardItems = shuffledScratchCards.slice(3);
+    const shuffledScratchCards = shuffleArray(scratchCards)
+    const scratchCardItems = shuffledScratchCards.slice(0, 3);
+    const scratchThumbnailCardItems = shuffledScratchCards.slice(3);
+    setScratchCardItems(scratchCardItems)
+    setScratchThumbnailCardItems(scratchThumbnailCardItems)
+  }, [])
 
   return (
     <section className="pt-20 pb-20">
@@ -449,7 +452,6 @@ const Team = ({ scratchCards }: { scratchCards: any[] }) => {
             />
           ))}
         </div>
-
         <div className="overflow-x-auto py-4">
           <div className="flex space-x-4 px-4">
             {scratchThumbnailCardItems.map((card) => (
