@@ -11,12 +11,22 @@ import url from '../lib/url'
 
 type Props = {
   allPosts: Post[]
-  shuffledScratchCards: any[]
 }
 
 export const getStaticProps = async () => {
   const allPosts = getAllPosts(['title', 'slug', 'image', 'excerpt'])
-
+  return {
+    props: { allPosts }
+  }
+}
+const shuffleArray = (array: any[]) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]
+  }
+  return array
+}
+const Index = ({ allPosts }: Props) => {
   const scratchCardsData = [
     {
       id: "896574978",
@@ -31,26 +41,13 @@ export const getStaticProps = async () => {
     {
       id: "918967238",
       title: "COSOMシューティング",
-      description: "矢印キーで操作できます。右側にいる人を動かして宇宙人をやっつけます。攻撃方法は、スペースキーで弱攻撃(エネルギー１５以上)Aキーで強攻撃(エネルギー２５以上)Sキーで遠距離攻撃(エネルギー２５以上)です。3つの攻撃をうまく使って雷攻撃をしてくる悪いうちゅ人を倒しましょう。"
+      description: "矢印キーで操作できます。右側にいる人を動かして宇宙人をやっつけます。攻撃方法は、スペースキーで弱攻撃(エネルギー１５以上)Aキーで強攻撃(エネルギー２５以上)Sキーで遠距離攻撃(エネルギー２５以上)です。3つの攻撃をうまく使って雷攻撃をしてくる悪い宇宙人を倒しましょう。"
     }
   ]
 
-  const shuffleArray = (array: any[]) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1))
-      ;[array[i], array[j]] = [array[j], array[i]]
-    }
-    return array
-  }
-
+ 
   const shuffledScratchCards = shuffleArray(scratchCardsData)
 
-  return {
-    props: { allPosts, shuffledScratchCards }
-  }
-}
-
-const Index = ({ allPosts, shuffledScratchCards }: Props) => {
   return (
     <Layout title="CoderDojo | Kisarazu">
       <Hero />
@@ -346,7 +343,9 @@ const Featured = ({ scratchCards }: { scratchCards: any[] }) => (
   </section>
 )
 
-const Team = ({ scratchCards }: { scratchCards: any[] }) => (
+const Team = ({ scratchCards }: { scratchCards: any[] }) => {
+scratchCards = shuffleArray(scratchCards)
+  return
   <section className="pt-20 pb-20">
     <div className="container mx-auto lg:px-4">
       <div className="flex flex-wrap justify-center text-center mb-24">
@@ -445,7 +444,7 @@ const Team = ({ scratchCards }: { scratchCards: any[] }) => (
       </div>
     </div>
   </section>
-)
+}
 
 const Finisher = () => (
   <section className="pb-20 relative block bg-gray-800">
