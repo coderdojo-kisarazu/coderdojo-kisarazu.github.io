@@ -59,7 +59,30 @@ const Footer = () => {
                     </Anchor>
                   </li>
                   <li>
-                    <Anchor href="https://coderdojo.com/">CoderDojo</Anchor>
+                    <Anchor href="https://coderdojo.com/">
+                      CoderDojo
+                    </Anchor>
+                  </li>
+                  <li>
+                    <Anchor href="https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%BC%E3%83%80%E3%83%BC%E9%81%93%E5%A0%B4
+">
+                      CoderDojo Wikipedia
+                    </Anchor>
+                  </li>
+                  <li>
+                    <Anchor href="https://www.facebook.com/npo.kazusalab/?locale=ja_JP">
+                      上総らぼ　公式FaceBook
+                    </Anchor>
+                  </li>
+                  <li>
+                    <Anchor href="https://kazusalab.org/">
+                      上総らぼ　公式Webサイト
+                    </Anchor>
+                  </li>
+                  <li>
+                    <Anchor href="https://zenn.dev/naoji">
+                      Naojiさんのブログ
+                    </Anchor>
                   </li>
                 </ul>
               </div>
