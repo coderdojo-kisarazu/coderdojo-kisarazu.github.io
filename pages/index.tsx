@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import Anchor from '../components/anchor'
 import Divider from '../components/divider'
 import Layout from '../components/layout'
@@ -8,7 +9,6 @@ import ServiceCard from '../components/service-card'
 import Post from '../interfaces/post'
 import { getAllPosts } from '../lib/api'
 import url from '../lib/url'
-import { useEffect, useState } from 'react'
 
 type ScratchCard = {
   id: string
@@ -17,14 +17,14 @@ type ScratchCard = {
 }
 
 type Props = {
-  allPosts: Post[],
+  allPosts: Post[]
   scratchCards: ScratchCard[]
 }
 
 const shuffleArray = (array: any[]) => {
   for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]]
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
   }
   return array
 }
@@ -33,46 +33,59 @@ export const getStaticProps = async () => {
   const allPosts = getAllPosts(['title', 'slug', 'image', 'excerpt'])
   const scratchCards = [
     {
-      id: "896574978",
-      title: "どんぐりスロット",
-      description: "ドングリを使ったスロットゲームです。同じ種類のドングリを組み合わせることができるか!? スタートをクリックしてスロットを回しましょう！スペースキーで止められます。"
+      id: '896574978',
+      title: 'どんぐりスロット',
+      description:
+        'ドングリを使ったスロットゲームです。同じ種類のドングリを組み合わせることができるか!? スタートをクリックしてスロットを回しましょう！スペースキーで止められます。'
     },
     {
-      id: "860791993",
-      title: "デジタル戦隊テレんじゃー",
-      description: "Scratchにオリジナルキャタラクターを読み込んでアニメーションをつける教材です。左右の矢印キーで移動、上矢印キーでジャンプします。スペースキーで必殺のデジタル・フラッシュが炸裂します!"
+      id: '860791993',
+      title: 'デジタル戦隊テレんじゃー',
+      description:
+        'Scratchにオリジナルキャタラクターを読み込んでアニメーションをつける教材です。左右の矢印キーで移動、上矢印キーでジャンプします。スペースキーで必殺のデジタル・フラッシュが炸裂します!'
     },
     {
-      id: "918967238",
-      title: "COSOMシューティング",
-      description: "矢印キーで操作できます。右側にいる人を動かして宇宙人をやっつけます。攻撃方法は、スペースキーで弱攻撃(エネルギー１５以上)Aキーで強攻撃(エネルギー２５以上)Sキーで遠距離攻撃(エネルギー２５以上)です。3つの攻撃をうまく使って雷攻撃をしてくる悪い宇宙人を倒しましょう。"
+      id: '918967238',
+      title: 'COSOMシューティング',
+      description:
+        '矢印キーで操作できます。右側にいる人を動かして宇宙人をやっつけます。攻撃方法は、スペースキーで弱攻撃(エネルギー１５以上)Aキーで強攻撃(エネルギー２５以上)Sキーで遠距離攻撃(エネルギー２５以上)です。3つの攻撃をうまく使って雷攻撃をしてくる悪い宇宙人を倒しましょう。'
     },
     {
-      id: "960666319",
-      title: "風船ゲーム",
-      description: "風船をウチワであおいで器に入れましょう!障害物で風船が割れないようにご用心!独特の浮遊感をお楽しみ下さい。CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。"
+      id: '960666319',
+      title: '風船ゲーム',
+      description:
+        '風船をウチワであおいで器に入れましょう!障害物で風船が割れないようにご用心!独特の浮遊感をお楽しみ下さい。CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。'
     },
     {
-      id: "766087772",
-      title: "ゆきんこゲーム",
-      description: "めいろ、ジャンプゲーム、アクションゲーム、３つの種類のゲームをゆきんこで楽しみましょう!"
+      id: '766087772',
+      title: 'ゆきんこゲーム',
+      description:
+        'めいろ、ジャンプゲーム、アクションゲーム、３つの種類のゲームをゆきんこで楽しみましょう!'
     },
     {
-      id: "799849878",
-      title: "鬼はそとゲーム",
-      description: "豆を投げて鬼退治!鬼は棍棒を投げてくるので、避けながら豆を投げましょう。"
+      id: '799849878',
+      title: '鬼はそとゲーム',
+      description:
+        '豆を投げて鬼退治!鬼は棍棒を投げてくるので、避けながら豆を投げましょう。'
     },
     {
-      id: "1013586458",
-      title: "風船バレーボール",
-      description: "風船をうちわであおいで、バレーボールをしましょう。自分の陣地で風船が割れたら負けです!CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。"
+      id: '1013586458',
+      title: '風船バレーボール',
+      description:
+        '風船をうちわであおいで、バレーボールをしましょう。自分の陣地で風船が割れたら負けです!CoderDojoでリミックスして楽しめるよう、極力シンプルなステージクリア型のゲームにしました。'
     },
     {
-      id: "556638656",
-      title: "アゲハの成長",
-      description: "Scratchでなみアゲハが幼虫から成虫になるまでを学びましょう!"
+      id: '556638656',
+      title: 'アゲハの成長',
+      description: 'Scratchでなみアゲハが幼虫から成虫になるまでを学びましょう!'
+    },
+    {
+      id: '1147618678',
+      title: '協力型シューティングゲーム',
+      description:
+        '二人のプレイヤーで協力して敵を倒しましょう。プレイヤー1は←↑→キー。プレイヤー2はAWDキーで操作します。敵を倒せばクリアです。もし地面についたりHPが0になったらゲームオーバーです。'
     }
-  ];
+  ]
 
   return {
     props: { allPosts, scratchCards }
@@ -80,7 +93,6 @@ export const getStaticProps = async () => {
 }
 
 const Index = ({ allPosts, scratchCards }: Props) => {
-
   return (
     <Layout title="CoderDojo | Kisarazu+Sodegaura">
       <Hero />
@@ -90,8 +102,8 @@ const Index = ({ allPosts, scratchCards }: Props) => {
       <Finisher />
       <Contact />
     </Layout>
-  );
-};
+  )
+}
 
 export default Index
 
@@ -353,7 +365,6 @@ const Featured = () => (
               また、センターでは情報発信スペース、作業スペース、印刷室や会議室などを備えています。
               JR内房線・久留里線　木更津駅から徒歩5分(350m)"
         />
-        
       </div>
     </div>
 
@@ -379,15 +390,16 @@ const Featured = () => (
   </section>
 )
 
-
 const Team = ({ scratchCards }: { scratchCards: ScratchCard[] }) => {
   const [scratchCardItems, setScratchCardItems] = useState<ScratchCard[]>([])
-  const [scratchThumbnailCardItems, setScratchThumbnailCardItems] = useState<ScratchCard[]>([])
+  const [scratchThumbnailCardItems, setScratchThumbnailCardItems] = useState<
+    ScratchCard[]
+  >([])
 
   useEffect(() => {
     const scratchCardsData = shuffleArray(scratchCards)
-    const scratchCardItems = scratchCardsData.slice(0, 3);
-    const scratchThumbnailCardItems = scratchCardsData.slice(3);
+    const scratchCardItems = scratchCardsData.slice(0, 3)
+    const scratchThumbnailCardItems = scratchCardsData.slice(3)
     setScratchCardItems(scratchCardItems)
     setScratchThumbnailCardItems(scratchThumbnailCardItems)
   }, [])
@@ -473,8 +485,8 @@ const Team = ({ scratchCards }: { scratchCards: ScratchCard[] }) => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
 const Finisher = () => (
   <section className="pb-20 relative block bg-gray-800">
