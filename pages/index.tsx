@@ -446,6 +446,12 @@ const Team = ({ scratchCards }: { scratchCards: ScratchCard[] }) => {
             profession="Scratch"
           />
           <MemberCard
+            name="高木"
+            role="メンター"
+            icon="/assets/blog/authors/takagi.jpg"
+            profession="セキュリティ"
+          />
+          <MemberCard
             name="小宮"
             role="メンター"
             icon="/assets/blog/authors/komiya.png"
