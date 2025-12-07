@@ -9,7 +9,7 @@ type Props = {
 }
 
 const MemberCard = ({ name, role, icon, profession }: Props) => (
-  <div className="w-full md:w-1/5 lg:w-1/5 lg:mb-0 mb-12 px-4">
+  <div className="w-full sm:w-1/2 md:w-1/3 xl:w-1/6 lg:mb-0 mb-12 px-4">
     <div className="px-6">
       <Image
         alt={name}
